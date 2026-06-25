@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>GemGem400 Study Overview</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel-2:#1d212b; --line:#2a2f3a;
+    --txt:#eef1f6; --muted:#a6afbd; --accent:#5b8cff; --accent-2:#33d6a6;
+    --warn:#ff8a65; --purple:#b388ff; --pill:#242a38;
+    --shadow:0 10px 36px rgba(0,0,0,.38); --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;font-size:18px;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Pretendard",Roboto,"Helvetica Neue",Arial,"Noto Sans KR",sans-serif;
+    background:radial-gradient(1300px 700px at 80% -10%,#1b2230 0%,var(--bg) 55%);
+    color:var(--txt); line-height:1.8; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 24px 100px;}
+  header.hero{text-align:center;padding:32px 18px 10px;}
+  .kicker{
+    display:inline-block;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent-2);background:rgba(51,214,166,.1);
+    border:1px solid rgba(51,214,166,.25);padding:8px 18px;border-radius:999px;margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(28px,4.2vw,42px);line-height:1.35;margin:0 0 18px;font-weight:800;letter-spacing:-.01em;}
+  .hero p.sub{color:var(--muted);font-size:1.12rem;max-width:820px;margin:0 auto;line-height:1.7;}
+  .tabs{
+    position:sticky;top:0;z-index:30;display:flex;justify-content:center;gap:10px;
+    padding:18px 0 22px;margin:28px 0 10px;
+    background:linear-gradient(to bottom,var(--bg) 62%,rgba(15,17,21,0));
+  }
+  .tab{
+    cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--muted);
+    padding:13px 34px;border-radius:999px;font-weight:700;font-size:1.05rem;transition:.18s;
+  }
+  .tab:hover{color:var(--txt);border-color:var(--accent);}
+  .tab.active{background:linear-gradient(135deg,var(--accent),#6f7bff);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(91,140,255,.4);}
+  .lang{display:none;}
+  .lang.active{display:block;animation:fade .3s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  section{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:34px 36px 38px;margin:24px 0;box-shadow:var(--shadow);}
+  .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:8px;}
+  .sec-num{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#0f1115;background:linear-gradient(135deg,var(--accent-2),#5be3c0);}
+  .sec-head h2{font-size:1.55rem;margin:0;font-weight:800;letter-spacing:-.01em;}
+  .sec-desc{color:var(--muted);font-size:1.02rem;margin:4px 0 24px 62px;line-height:1.65;}
+  @media(max-width:680px){.sec-desc{margin-left:0;}}
+  .keypoint{border-left:5px solid var(--accent-2);background:linear-gradient(90deg,rgba(51,214,166,.13),rgba(51,214,166,0));padding:22px 26px;border-radius:12px;margin:4px 0;font-size:1.18rem;line-height:1.75;}
+  .keypoint b{color:var(--accent-2);}
+  .grid{display:grid;gap:18px;}
+  .grid.g2{grid-template-columns:repeat(2,1fr);}
+  @media(max-width:760px){.grid.g2{grid-template-columns:1fr;}}
+  .card{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .card h3{margin:0 0 16px;font-size:1.15rem;display:flex;align-items:center;gap:10px;}
+  .dot{width:11px;height:11px;border-radius:50%;display:inline-block;}
+  .d-in{background:var(--accent-2);} .d-ex{background:var(--warn);}
+  ul.clean{list-style:none;margin:0;padding:0;}
+  ul.clean li{padding:11px 0 11px 26px;position:relative;font-size:1.05rem;color:#dde2ec;border-bottom:1px dashed rgba(255,255,255,.06);line-height:1.5;}
+  ul.clean li:last-child{border-bottom:none;}
+  ul.clean li:before{content:"";position:absolute;left:4px;top:19px;width:9px;height:9px;border-radius:2px;background:var(--accent);}
+  ul.clean.ex li:before{background:var(--warn);}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+  .pill{background:var(--pill);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:1rem;color:#d4dbe8;}
+  .pill.acc{border-color:rgba(91,140,255,.45);color:#c4d4ff;}
+  .flow{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:10px;}
+  .node{width:100%;max-width:580px;text-align:center;border-radius:14px;padding:20px 22px;font-weight:700;font-size:1.1rem;border:1px solid var(--line);background:var(--panel-2);}
+  .node.pop{background:linear-gradient(135deg,#23304a,#1d2738);border-color:rgba(91,140,255,.45);}
+  .node small{display:block;font-weight:500;color:var(--muted);font-size:.92rem;margin-top:7px;line-height:1.5;}
+  .arrow{position:relative;width:2px;height:38px;background:var(--accent);margin:4px 0;}
+  .arrow:after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--accent);}
+  .branch{position:relative;width:100%;max-width:680px;height:52px;margin:4px 0 0;}
+  .branch .stem{position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:24px;background:var(--accent);}
+  .branch .bar{position:absolute;top:24px;left:25%;right:25%;height:2px;background:var(--accent);}
+  .branch .drop{position:absolute;top:24px;width:2px;height:28px;background:var(--accent);}
+  .branch .drop.l{left:25%;} .branch .drop.r{right:25%;}
+  .branch .drop:after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid var(--accent);}
+  @media(max-width:560px){.branch{display:none;}}
+  .rand{background:linear-gradient(135deg,#3a2a55,#2a2140);border-color:rgba(179,136,255,.5);color:#ece2ff;}
+  .split{display:flex;gap:20px;width:100%;max-width:680px;justify-content:center;margin-top:8px;}
+  .split .node{flex:1;}
+  .node.arm-a{background:linear-gradient(135deg,#16493c,#14352c);border-color:rgba(51,214,166,.5);}
+  .node.arm-b{background:linear-gradient(135deg,#3d2b1c,#33271d);border-color:rgba(255,138,101,.45);}
+  .vs{align-self:center;font-weight:800;color:var(--muted);font-size:1rem;}
+  @media(max-width:560px){.split{flex-direction:column;}.vs{transform:rotate(0);}}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:1.05rem;overflow:hidden;border-radius:12px;}
+  th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line);}
+  thead th{background:var(--panel-2);color:var(--accent-2);font-size:.92rem;letter-spacing:.05em;text-transform:uppercase;}
+  tbody tr:hover{background:rgba(91,140,255,.07);}
+  td:first-child{font-weight:700;color:#d4dbe8;width:38%;}
+  .tier{display:flex;align-items:stretch;gap:18px;margin:16px 0;}
+  @media(max-width:680px){.tier{flex-direction:column;}.tier-label{flex-basis:auto;flex-direction:row;gap:8px;}}
+  .tier-label{flex:0 0 160px;border-radius:13px;display:flex;flex-direction:column;justify-content:center;padding:16px 18px;font-weight:800;font-size:1.1rem;}
+  .t-pri{background:linear-gradient(135deg,var(--accent),#6f7bff);color:#fff;}
+  .t-sec{background:linear-gradient(135deg,var(--accent-2),#39c9a0);color:#0f1115;}
+  .t-exp{background:linear-gradient(135deg,var(--purple),#9d6bff);color:#fff;}
+  .tier-label small{font-weight:600;font-size:.82rem;opacity:.88;display:block;margin-top:3px;}
+  .tier-body{flex:1;background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:18px 22px;font-size:1.05rem;line-height:1.6;}
+  .tier-body .pills{margin-top:12px;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px;}
+  @media(max-width:760px){.steps{grid-template-columns:1fr;}}
+  .step{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;}
+  .step .badge{font-size:.82rem;color:var(--accent);font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+  .step h4{margin:9px 0 11px;font-size:1.18rem;}
+  .step p{margin:0;font-size:1.02rem;color:var(--muted);line-height:1.6;}
+
+  /* Sample size */
+  .ss-top{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:stretch;}
+  @media(max-width:820px){.ss-top{grid-template-columns:1fr;}}
+  .assump{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:8px 22px;}
+  .assump .row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 0;border-bottom:1px dashed rgba(255,255,255,.07);font-size:1.05rem;}
+  .assump .row:last-child{border-bottom:none;}
+  .assump .row span:first-child{color:var(--muted);}
+  .assump .row b{color:#cfe0ff;font-size:1.1rem;font-weight:700;}
+  .bignum{background:linear-gradient(160deg,#1d3a52,#16273a);border:1px solid rgba(91,140,255,.5);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 20px;}
+  .bignum .lab{color:var(--accent-2);font-size:1rem;font-weight:700;letter-spacing:.04em;}
+  .bignum .num{font-size:3.6rem;font-weight:800;line-height:1.05;margin:8px 0 2px;background:linear-gradient(135deg,#7fa8ff,#33d6a6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .bignum .sub{color:var(--muted);font-size:.98rem;}
+  .calc{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin-top:22px;}
+  .calc .box{flex:1;min-width:150px;background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:18px 16px;text-align:center;}
+  .calc .box .t{color:var(--muted);font-size:.92rem;margin-bottom:8px;line-height:1.4;}
+  .calc .box .v{font-size:1.7rem;font-weight:800;color:#cfe0ff;}
+  .calc .box .v small{font-size:.85rem;color:var(--muted);font-weight:600;display:block;margin-top:3px;}
+  .calc .op{display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:var(--accent);font-weight:800;padding:0 12px;}
+  @media(max-width:680px){.calc{flex-direction:column;}.calc .op{padding:8px 0;transform:rotate(90deg);}}
+  .note{margin-top:18px;color:var(--muted);font-size:.98rem;line-height:1.6;background:rgba(255,138,101,.08);border-left:4px solid var(--warn);padding:14px 18px;border-radius:10px;}
+  .note b{color:#ffd3c2;}
+  .invite{border-left:5px solid var(--accent);background:linear-gradient(90deg,rgba(91,140,255,.12),rgba(91,140,255,0));padding:20px 24px;border-radius:12px;margin-bottom:22px;font-size:1.08rem;line-height:1.7;}
+  .invite b{color:#c4d4ff;}
+  .glance{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:4px;}
+  @media(max-width:880px){.glance{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.glance{grid-template-columns:1fr;}}
+  .gi{background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:16px 18px;}
+  .gi .k{font-size:.78rem;color:var(--accent-2);font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+  .gi .v{font-size:1.05rem;font-weight:700;margin-top:7px;color:#eef1f6;line-height:1.4;}
+  .gi .v small{display:block;font-weight:500;color:var(--muted);font-size:.85rem;margin-top:3px;}
+  .sec-num.star{background:linear-gradient(135deg,var(--accent),#6f7bff);color:#fff;}
+  .upg{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  @media(max-width:760px){.upg{grid-template-columns:1fr;}}
+  .upgi{background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:16px 18px;}
+  .upgi .t{font-weight:800;font-size:1.05rem;margin-bottom:12px;}
+  .upgi .ba{display:flex;gap:10px;align-items:flex-start;font-size:.96rem;line-height:1.5;color:#dde2ec;}
+  .upgi .tag{flex:0 0 auto;font-weight:800;font-size:.72rem;padding:3px 9px;border-radius:6px;margin-top:2px;}
+  .tag.no{background:rgba(255,138,101,.16);color:#ffa98f;}
+  .tag.yes{background:rgba(51,214,166,.16);color:#5be3c0;}
+  .dec{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:760px){.dec{grid-template-columns:1fr;}}
+  .dcard{background:var(--panel-2);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:20px;position:relative;}
+  .dcard .qn{display:flex;gap:10px;align-items:center;margin-bottom:6px;padding-right:74px;}
+  .dcard .qnum{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex:0 0 auto;}
+  .dcard h4{margin:0;font-size:1.1rem;}
+  .dcard .opts .o{display:inline-block;background:var(--pill);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.88rem;margin:5px 5px 0 0;color:#cfd6e4;}
+  .dcard .rec{font-size:.92rem;color:var(--muted);line-height:1.55;margin-top:12px;border-top:1px dashed rgba(255,255,255,.08);padding-top:10px;}
+  .dcard .rec b{color:var(--accent-2);}
+  .chip{position:absolute;top:18px;right:18px;font-size:.7rem;font-weight:800;padding:4px 11px;border-radius:999px;}
+  .chip.disc{background:rgba(179,136,255,.16);color:#cdb4ff;}
+  .chip.data{background:rgba(255,138,101,.16);color:#ffb59e;}
+  .pick{margin-top:10px;font-size:.92rem;color:#d7efe6;background:rgba(51,214,166,.1);border:1px solid rgba(51,214,166,.25);border-radius:9px;padding:8px 12px;line-height:1.55;}
+  .pick b{color:#5be3c0;}
+
+  /* Site allocation */
+  .sites{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px;}
+  @media(max-width:680px){.sites{grid-template-columns:1fr;}}
+  .site{border-radius:16px;padding:22px;border:1px solid var(--line);background:var(--panel-2);position:relative;}
+  .site.primary{border-color:rgba(91,140,255,.55);background:linear-gradient(160deg,#1d3050,#172234);box-shadow:0 0 0 1px rgba(91,140,255,.15) inset;}
+  .site .flag{font-size:1.3rem;}
+  .site .role{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+  .role.pri{background:var(--accent);color:#fff;}
+  .role.gen{background:#3a4254;color:#cfd6e4;}
+  .site .stitle{font-size:1.2rem;font-weight:800;margin:14px 0 4px;}
+  .site .stotal{color:var(--muted);font-size:1rem;}
+  .site .stotal b{color:#cfe0ff;font-size:1.35rem;}
+  .arm2{display:flex;gap:12px;margin-top:16px;}
+  .arm2 .a{flex:1;border-radius:11px;padding:14px 10px;text-align:center;font-weight:700;}
+  .arm2 .a.int{background:linear-gradient(135deg,#16493c,#14352c);border:1px solid rgba(51,214,166,.45);}
+  .arm2 .a.ctrl{background:linear-gradient(135deg,#3d2b1c,#33271d);border:1px solid rgba(255,138,101,.4);}
+  .arm2 .a .n{font-size:1.7rem;font-weight:800;line-height:1;}
+  .arm2 .a .l{font-size:.82rem;color:var(--muted);margin-top:6px;}
+  .pooled{margin-top:18px;background:linear-gradient(135deg,rgba(91,140,255,.16),rgba(179,136,255,.12));border:1px solid rgba(91,140,255,.4);border-radius:14px;padding:18px 22px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center;}
+  .pooled .big{font-size:1.6rem;font-weight:800;color:#cfe0ff;}
+  .pooled .lab{color:var(--muted);font-size:1rem;}
+  .pwr td:first-child{width:34%;}
+  .pwr .hi{color:var(--accent-2);font-weight:700;}
+  .subh{font-size:1.12rem;font-weight:800;margin:30px 0 8px;display:flex;align-items:center;gap:10px;}
+  .subh:before{content:"";width:5px;height:18px;border-radius:3px;background:var(--accent-2);}
+
+  .conclusion{background:linear-gradient(135deg,rgba(91,140,255,.13),rgba(179,136,255,.1));border:1px solid rgba(91,140,255,.3);border-radius:var(--radius);padding:30px 34px;margin-top:24px;}
+  .conclusion h2{margin:0 0 14px;font-size:1.4rem;}
+  .conclusion p{font-size:1.1rem;line-height:1.75;}
+  .conclusion .stamp{display:inline-block;background:#0f1115;border:1px solid var(--accent);color:#c4d4ff;padding:12px 22px;border-radius:12px;font-weight:700;margin-top:14px;font-size:1.05rem;}
+  footer{text-align:center;color:var(--muted);font-size:.92rem;margin-top:50px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker" data-ko="연구 설계 개요" data-en="Study Design Overview">Study Design Overview</span>
+    <h1 data-ko="발달장애 아동의 손 조작 기능 저하 개선을 위한<br>AI 기반 게임형 재활 중재 효과성 연구"
+        data-en="Effects of an AI-Powered Game-Based Rehabilitation Intervention<br>on Manual Dexterity Impairment in Neurodevelopmental Disorders">
+      Effects of an AI-Powered Game-Based Rehabilitation Intervention<br>on Manual Dexterity Impairment in Neurodevelopmental Disorders
+    </h1>
+    <p class="sub" data-ko="진단명은 넓히되, 기능 문제는 “손 조작 기능 저하”(manual dexterity impairment) 하나로 강하게 고정하는 설계"
+       data-en="Broaden the diagnoses, but anchor strongly on a single functional criterion — manual dexterity impairment.">
+      Broaden the diagnoses, but anchor strongly on a single functional criterion — manual dexterity impairment.
+    </p>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="setLang('en')">🇺🇸 English</div>
+    <div class="tab" onclick="setLang('ko')">🇰🇷 한국어</div>
+  </div>
+
+  <!-- KOREAN -->
+  <div class="lang" id="ko">
+    <section>
+      <div class="invite">🤝 본 문서는 <b>미국 재활의학 임상기관 협력(공동연구·대상자 등록)</b>을 위한 연구 개요입니다. 소아 손기능 재활에 관심 있는 임상의 선생님들의 참여를 환영합니다.</div>
+      <div class="sec-head"><div class="sec-num star">★</div><h2>연구 한눈에 보기</h2></div>
+      <div class="glance">
+        <div class="gi"><div class="k">연구 설계</div><div class="v">다기관 RCT<small>한국 · 미국</small></div></div>
+        <div class="gi"><div class="k">대상</div><div class="v">발달장애 아동 4–8세<small>손 조작 기능 저하 동반</small></div></div>
+        <div class="gi"><div class="k">표본수</div><div class="v">총 200명<small>한국 100 + 미국 100</small></div></div>
+        <div class="gi"><div class="k">중재</div><div class="v">GemGem400 가정 사용<small>주 5회 · 10–15분 · 12주</small></div></div>
+        <div class="gi"><div class="k">1차 결과</div><div class="v">기능적 손사용 · ADL<small>+ 손기능 수행, EEG(기전)</small></div></div>
+        <div class="gi"><div class="k">평가 시점</div><div class="v">기저 · 12주 · 추적<small>약 24주 추적</small></div></div>
+        <div class="gi"><div class="k">연구 기간</div><div class="v">약 24개월<small>준비 → 등록 → 분석</small></div></div>
+        <div class="gi"><div class="k">연구비</div><div class="v">₩5억<small>≈ USD 370K</small></div></div>
+      </div>
+    </section>
+    <section>
+      <div class="keypoint">
+        핵심은 <b>“IDD 전체”</b>가 아니라 <b>“손 조작 기능 저하가 있는 발달장애 아동”</b>으로 좁히는 것.<br>
+        진단명은 넓히되, <b>기능 문제는 하나로 고정</b>한다.
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">1</div><h2>대상군</h2></div>
+      <p class="sec-desc">만 4–8세 발달장애 아동 중, 손 조작 기능 저하가 확인된 아동</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3>포함 진단군 (예시)</h3>
+          <div class="pills">
+            <span class="pill acc">CP · 뇌성마비</span><span class="pill acc">ASD · 자폐</span>
+            <span class="pill acc">Down syndrome</span><span class="pill acc">DCD</span><span class="pill acc">기타 IDD</span>
+          </div>
+        </div>
+        <div class="card" style="display:flex;align-items:center;">
+          <p style="margin:0;font-size:1.08rem;color:#dde2ec;line-height:1.7;">⚠️ 진단명이 아니라<br><b style="color:var(--accent-2)">손기능 저하 여부</b>가 핵심 기준.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">2</div><h2>포함 / 제외 기준</h2></div>
+      <div class="grid g2">
+        <div class="card">
+          <h3><span class="dot d-in"></span> 포함 기준</h3>
+          <ul class="clean">
+            <li>만 4–8세</li><li>발달장애 / 신경발달장애 진단</li><li>손 조작 기능 저하 확인</li>
+            <li>간단한 지시 이해 가능</li><li>보호자 도움 하 10–15분 게임 수행</li><li>가정 내 주 5회 이상 사용 가능</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="dot d-ex"></span> 제외 기준</h3>
+          <ul class="clean ex">
+            <li>조절되지 않는 발작</li><li>심한 시각 / 청각 문제</li><li>중증 행동문제 (게임 수행 방해)</li>
+            <li>최근 보톡스 / 수술 / 집중 상지치료</li><li>평가 불가능한 인지 / 행동 수준</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">3</div><h2>연구 설계 — RCT</h2></div>
+      <p class="sec-desc">한국 데이터만으로 유의미해야 하므로, 국내에서 충분한 표본 확보가 필수</p>
+      <div class="flow">
+        <div class="node pop">손 조작 기능 저하가 있는 발달장애 아동 (만 4–8세)<small>한국 메인 코호트</small></div>
+        <div class="arrow"></div>
+        <div class="node rand">층화 블록 무작위배정<small>Stratified Block Randomization</small></div>
+        <div class="branch"><span class="stem"></span><span class="bar"></span><span class="drop l"></span><span class="drop r"></span></div>
+        <div class="split">
+          <div class="node arm-a">실험군<small>GemGem400 + TAU</small></div>
+          <div class="vs">VS</div>
+          <div class="node arm-b">대조군<small>TAU only 또는 Waitlist</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">4</div><h2>랜덤화 — 층화 기준</h2></div>
+      <p class="sec-desc">그냥 무작위 배정 ❌ — 같은 국가·같은 진단 안에서 군 비율이 비슷하도록 배정</p>
+      <table>
+        <thead><tr><th>요인</th><th>구분</th><th>처리</th></tr></thead>
+        <tbody>
+          <tr><td>국가 (site)</td><td>한국 / 미국</td><td>층화 ✓</td></tr>
+          <tr><td>진단</td><td>ASD / CP / DCD / 기타 IDD</td><td>층화 ✓</td></tr>
+          <tr><td>연령</td><td>4–5세 / 6–8세</td><td>공변량 보정</td></tr>
+          <tr><td>인지수준</td><td>지시 이해 가능 / 보조 필요</td><td>공변량 보정</td></tr>
+          <tr><td>Baseline 손기능</td><td>경도 / 중등도</td><td>공변량 보정</td></tr>
+        </tbody>
+      </table>
+      <div class="note">⚠️ N=200에 층화 요인을 다 넣으면 셀이 비어 배정이 깨짐 → <b>층화는 [국가 + 진단] 2개로 압축</b>, 나머지는 분석 시 ANCOVA 공변량으로 보정.</div>
+    </section>
+
+    <!-- 표본수 산정 -->
+    <section>
+      <div class="sec-head"><div class="sec-num">5</div><h2>표본수 산정 — 2개국 설계</h2></div>
+      <p class="sec-desc">한국 100 + 미국 100 = 총 200명 · 각 사이트 1:1 배정 (50 실험 / 50 대조)</p>
+
+      <div class="sites">
+        <div class="site primary">
+          <span class="flag">🇰🇷</span><span class="role pri">Primary</span>
+          <div class="stitle">한국 메인 코호트</div>
+          <div class="stotal">총 <b>100명</b> · 단독으로 primary 결론 도출</div>
+          <div class="arm2">
+            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + TAU</div></div>
+            <div class="a ctrl"><div class="n">50</div><div class="l">TAU / Waitlist</div></div>
+          </div>
+        </div>
+        <div class="site">
+          <span class="flag">🇺🇸</span><span class="role gen">Generalizability</span>
+          <div class="stitle">미국 코호트</div>
+          <div class="stotal">총 <b>100명</b> · 재현·일반화·pooled 보강</div>
+          <div class="arm2">
+            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + TAU</div></div>
+            <div class="a ctrl"><div class="n">50</div><div class="l">TAU / Waitlist</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pooled">
+        <span class="lab">한·미 Pooled →</span>
+        <span class="big">실험 100 + 대조 100 = 200명</span>
+        <span class="lab">(site 보정 분석)</span>
+      </div>
+
+      <div class="subh">검정력 (Power)</div>
+      <table class="pwr">
+        <thead><tr><th>분석</th><th>N (군당)</th><th>검정력 (d=0.5)</th><th>역할</th></tr></thead>
+        <tbody>
+          <tr><td>한국 단독</td><td>100 (50/50)</td><td class="hi">≈ 80%</td><td>Primary 결론</td></tr>
+          <tr><td>미국 단독</td><td>100 (50/50)</td><td class="hi">≈ 80%</td><td>재현 · 일반화</td></tr>
+          <tr><td>한·미 Pooled</td><td>200 (100/100)</td><td class="hi">&gt; 95%</td><td>확정 분석 + subgroup</td></tr>
+        </tbody>
+      </table>
+      <p class="sec-desc" style="margin-left:0;margin-top:12px;">가정: 양측 α=0.05 · ANCOVA(baseline 보정, r≈0.5) · 1:1 배정. 진단군은 공변량으로 보정.</p>
+
+      <div class="subh">진단군 분포 — 사전 쿼터 (하이브리드)</div>
+      <table>
+        <thead><tr><th>진단</th><th>한국 (군당)</th><th>미국 (군당)</th><th>Pooled</th></tr></thead>
+        <tbody>
+          <tr><td>ASD · 자폐</td><td>40 (20)</td><td>40 (20)</td><td>80</td></tr>
+          <tr><td>CP · 뇌성마비</td><td>28 (14)</td><td>28 (14)</td><td>56</td></tr>
+          <tr><td>DCD</td><td>20 (10)</td><td>20 (10)</td><td>40</td></tr>
+          <tr><td>기타 IDD (Down 등)</td><td>12 (6)</td><td>12 (6)</td><td>24</td></tr>
+          <tr><td style="color:var(--accent-2)"><b>합계</b></td><td><b>100 (50)</b></td><td><b>100 (50)</b></td><td><b>200</b></td></tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        ⚠️ <b>하이브리드 원칙</b>: 우세 진단(ASD)에 상한, 희소 진단에 하한을 둬 subgroup이 비지 않게 함. ASD는 실제 유병률보다 의도적으로 적게 잡힘(상한) → pooled에서 유병률 가중 민감도분석 권장.<br>
+        ⚠️ 검정력은 <b>completer(분석대상) 기준</b>이라, 탈락 15–20%를 감안해 <b>사이트당 군당 약 60명 등록</b>(완료 50명 목표)으로 버퍼를 둘 것.
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">6</div><h2>분석 전략</h2></div>
+      <div class="steps">
+        <div class="step"><span class="badge">Primary</span><h4>주 분석</h4><p>전체 한국 대상자에서 GemGem400군 vs 대조군의 손기능·ADL 변화 비교.</p></div>
+        <div class="step"><span class="badge">Adjustment</span><h4>공변량 보정</h4><p>진단군 · 나이 · baseline 손기능 · 인지수준 · 행동/주의 문제를 보정.</p></div>
+        <div class="step"><span class="badge">Subgroup</span><h4>하위군 (탐색적)</h4><p>CP / ASD / Down·DCD를 따로 보되, 메인 결론으로 과하게 주장하지 않음.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">7</div><h2>Outcome</h2></div>
+      <div class="tier">
+        <div class="tier-label t-pri">Primary<small>주 결과변수</small></div>
+        <div class="tier-body"><b>ADL · 기능적 손사용</b> — 진단군이 다양하면 QUEST 같은 CP 중심 평가는 일부 대상군에 덜 맞을 수 있음.
+          <div class="pills"><span class="pill acc">PEDI</span><span class="pill acc">PMAL</span><span class="pill acc">COPM</span><span class="pill acc">ABILHAND-Kids (검토)</span></div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-label t-sec">Secondary<small>손기능 · 수행</small></div>
+        <div class="tier-body">수행 기반 손기능 평가
+          <div class="pills"><span class="pill">BBT</span><span class="pill">FDT</span><span class="pill">grip / pinch</span><span class="pill">video-based scoring</span></div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-label t-exp">Exploratory<small>탐색적</small></div>
+        <div class="tier-body">기전 · 사용 데이터
+          <div class="pills"><span class="pill">EEG</span><span class="pill">neural connectivity</span><span class="pill">앱 로그</span><span class="pill">수행 횟수</span><span class="pill">순응도</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="invite" style="border-left-color:var(--accent-2);background:linear-gradient(90deg,rgba(51,214,166,.12),rgba(51,214,166,0));">🧪 <b style="color:#5be3c0;">현재 파일럿 진행 중</b> (세브란스) — N=27 · CP 70% / ASD 30% · 1차: AROM, Box &amp; Blocks · 2차: EEG. 아래 보강·결정은 <b style="color:#5be3c0;">본 연구(N=200)</b> 설계를 위한 것.</div>
+      <div class="sec-head"><div class="sec-num">8</div><h2>방법론 보강 (확증연구 등급)</h2></div>
+      <p class="sec-desc">전문가 리뷰 반영 — "탐색"에서 "확증 가능"으로 끌어올리는 6개 잠금 결정</p>
+      <div class="upg">
+        <div class="upgi"><div class="t">① 대조군 · 맹검</div>
+          <div class="ba"><span class="tag no">현재</span><span>TAU/Waitlist · 비맹검 → 기대편향</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>Active/Sham 앱 대조 + 평가자 맹검</span></div></div>
+        <div class="upgi"><div class="t">② 1차 결과지표</div>
+          <div class="ba"><span class="tag no">현재</span><span>AROM·Box&amp;Blocks (손상·수행 수준)</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>기능적/ADL 1차 지표 추가 + MCID (급여 명분)</span></div></div>
+        <div class="upgi"><div class="t">③ 검정력 가정</div>
+          <div class="ba"><span class="tag no">현재</span><span>d·탈락률 가정값</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>파일럿(N=27) 효과크기로 재계산 + 군집(ICC)·탈락 현실화</span></div></div>
+        <div class="upgi"><div class="t">④ 진입 기준</div>
+          <div class="ba"><span class="tag no">현재</span><span>"손기능 저하" 모호</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>객관적 도구·컷오프 명시 (예: ≤5%ile)</span></div></div>
+        <div class="upgi"><div class="t">⑤ 진단 이질성</div>
+          <div class="ba"><span class="tag no">현재</span><span>CP 70% + ASD 30% 혼합</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>진단×중재 상호작용 사전명시 또는 주력진단 결정</span></div></div>
+        <div class="upgi"><div class="t">⑥ EEG 바이오마커</div>
+          <div class="ba"><span class="tag no">현재</span><span>2차로만 수집</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>주요 EEG 엔드포인트·바이오마커 사전정의 + 파일럿 검증</span></div></div>
+      </div>
+      <div class="note">📋 추가 잠금: 사전등록(ClinicalTrials.gov+CRIS)·SAP·Estimand(ICH E9-R1)·중앙배정/배정은닉·ITT&amp;PP·순응도 정의·안전성 모니터링·(2개국 시) TAU통일·측정동등성·건강경제 결과.</div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">9</div><h2>아직 결정이 필요한 사항 — 교수님 논의용</h2></div>
+      <p class="sec-desc">본 연구(N=200) 프로토콜 확정 전 합의 필요 · 칩 = 🟣 교수 합의 / 🟠 파일럿 데이터 필요</p>
+      <div class="dec">
+        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">1</span><h4>적응증 범위</h4></div>
+          <div class="opts"><span class="o">CP 주력 유지</span><span class="o">단일 CP</span><span class="o">ASD 비중↑(펀더)</span></div>
+          <div class="rec"><b>쟁점</b>: 제품 기전(CP)·완성도 ↔ 펀더(현대해상=ASD) 정렬. 현재 70/30을 본연구서 유지할지.</div>
+          <div class="pick"><b>✅ 추천</b>: <b>CP 주력 유지</b> + 진단×중재 상호작용 사전명시. 제품 강점·파일럿 근거가 CP. ASD는 탐색군으로.</div></div>
+        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">2</span><h4>1차 결과지표</h4></div>
+          <div class="opts"><span class="o">AROM·BBT 유지</span><span class="o">+기능/ADL 추가</span><span class="o">ABILHAND-Kids</span></div>
+          <div class="rec"><b>쟁점</b>: AROM·BBT는 손상·수행 수준 → 급여·정책엔 <b>기능/ADL</b>이 필요. 1차를 무엇으로 확정?</div>
+          <div class="pick"><b>✅ 추천</b>: 1차 = <b>ABILHAND-Kids</b>(기능·교차진단), 주요 2차 = <b>Box&amp;Blocks</b>. AROM은 2차로.</div></div>
+        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">3</span><h4>대조군 형태</h4></div>
+          <div class="opts"><span class="o">Active/Sham 앱</span><span class="o">Waitlist</span><span class="o">TAU only</span></div>
+          <div class="rec"><b>쟁점</b>: Sham이 완성도 최상이나 개발비·윤리. Waitlist는 편향 큼.</div>
+          <div class="pick"><b>✅ 추천</b>: <b>Active/Sham 앱 + 평가자 맹검</b>. 개발비 부담 시 '주의 일치' 활성대조로 대체.</div></div>
+        <div class="dcard"><span class="chip data">데이터</span><div class="qn"><span class="qnum">4</span><h4>진입 컷오프</h4></div>
+          <div class="opts"><span class="o">≤5%ile</span><span class="o">≤16%ile</span><span class="o">임상판단</span></div>
+          <div class="rec"><b>쟁점</b>: 엄격할수록 동질·재현↑·모집↓. 어느 도구로 컷오프 잡을지.</div>
+          <div class="pick"><b>✅ 추천</b>: <b>≤16%ile(−1SD)</b> — 동질성과 모집 균형. CP는 MACS 등급 병기.</div></div>
+        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">5</span><h4>2개국 vs 한국 단독</h4></div>
+          <div class="opts"><span class="o">한·미 200</span><span class="o">한국 단독</span></div>
+          <div class="rec"><b>쟁점</b>: 일반화 ↔ TAU 비등가·FDA/IRB·비용. 같이 논문 안 나올 위험.</div>
+          <div class="pick"><b>✅ 추천</b>: <b>한국 단독</b>으로 본연구 확정(펀더·세브란스 기반). 미국은 추후 별도 일반화 연구.</div></div>
+        <div class="dcard"><span class="chip data">데이터</span><div class="qn"><span class="qnum">6</span><h4>EEG 주요 바이오마커</h4></div>
+          <div class="opts"><span class="o">Mu 억제</span><span class="o">연결성</span><span class="o">ERP</span></div>
+          <div class="rec"><b>쟁점</b>: 4–8세 NDD 측정 실현가능성(잡파·협조). 파일럿(세브란스)서 어느 지표가 잡히는지 확인.</div>
+          <div class="pick"><b>✅ 추천</b>: <b>감각운동 Mu 리듬 억제</b>를 주(主)EEG로(운동 기전과 직결), 연결성은 2차. 파일럿서 실현가능성 확정.</div></div>
+        <div class="dcard"><span class="chip data">데이터</span><div class="qn"><span class="qnum">7</span><h4>중재 용량·기간</h4></div>
+          <div class="opts"><span class="o">12주</span><span class="o">8주</span><span class="o">16주</span></div>
+          <div class="rec"><b>쟁점</b>: "400회" dose의 임상 근거 + 가정 순응 한계 균형.</div>
+          <div class="pick"><b>✅ 추천</b>: <b>12주</b>(운동학습 표준) + 순응도 모니터링·최소용량 민감도분석.</div></div>
+        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">8</span><h4>추적기간 (지속성)</h4></div>
+          <div class="opts"><span class="o">12주</span><span class="o">24주</span><span class="o">52주</span></div>
+          <div class="rec"><b>쟁점</b>: 가소성 지속 주장하려면 장기 추적 ↔ 탈락·비용.</div>
+          <div class="pick"><b>✅ 추천</b>: <b>24주 추적</b>(지속성 입증과 탈락 균형). 가능하면 52주 선택적.</div></div>
+      </div>
+    </section>
+
+    <div class="conclusion">
+      <h2>📌 결론</h2>
+      <p style="margin:0;color:#dde2ec;">CP만으로 좁히기보다, <b>진단은 넓히되 “손기능 저하”라는 공통 기준으로 강하게 묶는 설계</b>.<br>단, 다음을 <b>처음부터 프로토콜에 박아야 함</b>:</p>
+      <div class="stamp">층화 무작위배정 &nbsp;+&nbsp; 진단별 보정 &nbsp;+&nbsp; Subgroup Analysis</div>
+    </div>
+  </div>
+
+  <!-- ENGLISH -->
+  <div class="lang active" id="en">
+    <section>
+      <div class="invite">🤝 This is a study overview for <b>collaboration with US rehabilitation clinical sites (co-investigation / participant recruitment)</b>. Clinicians interested in pediatric hand-function rehabilitation are warmly invited to take part.</div>
+      <div class="sec-head"><div class="sec-num star">★</div><h2>Study at a Glance</h2></div>
+      <div class="glance">
+        <div class="gi"><div class="k">Design</div><div class="v">Multi-site RCT<small>Korea · US</small></div></div>
+        <div class="gi"><div class="k">Population</div><div class="v">Children 4–8 with NDD<small>+ manual dexterity impairment</small></div></div>
+        <div class="gi"><div class="k">Sample</div><div class="v">200 total<small>Korea 100 + US 100</small></div></div>
+        <div class="gi"><div class="k">Intervention</div><div class="v">GemGem400 at home<small>5×/wk · 10–15 min · 12 wks</small></div></div>
+        <div class="gi"><div class="k">Primary outcome</div><div class="v">Functional hand use · ADL<small>+ performance, EEG (mechanism)</small></div></div>
+        <div class="gi"><div class="k">Assessments</div><div class="v">Baseline · 12 wk · follow-up<small>~24-wk follow-up</small></div></div>
+        <div class="gi"><div class="k">Duration</div><div class="v">~24 months<small>setup → enroll → analysis</small></div></div>
+        <div class="gi"><div class="k">Budget</div><div class="v">₩500M<small>≈ USD 370K</small></div></div>
+      </div>
+    </section>
+    <section>
+      <div class="keypoint">The key is not <b>“all IDD”</b> but <b>“children with developmental disorders who have manual dexterity impairment.”</b><br>Broaden the diagnoses, but <b>fix the functional problem to a single criterion.</b></div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">1</div><h2>Target Population</h2></div>
+      <p class="sec-desc">Children aged 4–8 with developmental disorders and confirmed manual dexterity impairment</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Included Diagnoses (examples)</h3>
+          <div class="pills"><span class="pill acc">CP</span><span class="pill acc">ASD</span><span class="pill acc">Down syndrome</span><span class="pill acc">DCD</span><span class="pill acc">Other IDD</span></div>
+        </div>
+        <div class="card" style="display:flex;align-items:center;">
+          <p style="margin:0;font-size:1.08rem;color:#dde2ec;line-height:1.7;">⚠️ The core criterion is<br><b style="color:var(--accent-2)">manual dexterity impairment</b>, not the diagnosis.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">2</div><h2>Inclusion / Exclusion</h2></div>
+      <div class="grid g2">
+        <div class="card">
+          <h3><span class="dot d-in"></span> Inclusion</h3>
+          <ul class="clean"><li>Age 4–8 years</li><li>Developmental / neurodevelopmental diagnosis</li><li>Confirmed manual dexterity impairment</li><li>Understands simple instructions</li><li>Plays a 10–15 min game with caregiver</li><li>Home use ≥ 5×/week feasible</li></ul>
+        </div>
+        <div class="card">
+          <h3><span class="dot d-ex"></span> Exclusion</h3>
+          <ul class="clean ex"><li>Uncontrolled seizures</li><li>Severe visual / auditory impairment</li><li>Severe behavioral issues (block gameplay)</li><li>Recent botox / surgery / intensive UL therapy</li><li>Cognitive/behavioral level precluding assessment</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">3</div><h2>Study Design — RCT</h2></div>
+      <p class="sec-desc">Must be powered on Korean data alone → secure an adequate domestic sample</p>
+      <div class="flow">
+        <div class="node pop">Children with developmental disorders + manual dexterity impairment (age 4–8)<small>Korean main cohort</small></div>
+        <div class="arrow"></div>
+        <div class="node rand">Stratified Block Randomization<small>balanced within country × diagnosis</small></div>
+        <div class="branch"><span class="stem"></span><span class="bar"></span><span class="drop l"></span><span class="drop r"></span></div>
+        <div class="split">
+          <div class="node arm-a">Intervention<small>GemGem400 + TAU</small></div>
+          <div class="vs">VS</div>
+          <div class="node arm-b">Control<small>TAU only or Waitlist</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">4</div><h2>Randomization — Strata</h2></div>
+      <p class="sec-desc">No plain randomization ❌ — balance arms within each country × diagnosis cell</p>
+      <table>
+        <thead><tr><th>Factor</th><th>Categories</th><th>Handling</th></tr></thead>
+        <tbody>
+          <tr><td>Country (site)</td><td>Korea / US</td><td>Stratify ✓</td></tr>
+          <tr><td>Diagnosis</td><td>ASD / CP / DCD / Other IDD</td><td>Stratify ✓</td></tr>
+          <tr><td>Age</td><td>4–5 yrs / 6–8 yrs</td><td>Covariate</td></tr>
+          <tr><td>Cognitive level</td><td>Understands / Needs support</td><td>Covariate</td></tr>
+          <tr><td>Baseline hand function</td><td>Mild / Moderate</td><td>Covariate</td></tr>
+        </tbody>
+      </table>
+      <div class="note">⚠️ Stratifying on all 5 factors with N=200 empties cells → <b>stratify on [country + diagnosis] only</b>; adjust the rest as ANCOVA covariates.</div>
+    </section>
+
+    <!-- Sample size -->
+    <section>
+      <div class="sec-head"><div class="sec-num">5</div><h2>Sample Size — Two-Country Design</h2></div>
+      <p class="sec-desc">Korea 100 + US 100 = 200 total · 1:1 allocation per site (50 intervention / 50 control)</p>
+
+      <div class="sites">
+        <div class="site primary">
+          <span class="flag">🇰🇷</span><span class="role pri">Primary</span>
+          <div class="stitle">Korea — main cohort</div>
+          <div class="stotal"><b>100</b> total · self-powered primary conclusion</div>
+          <div class="arm2">
+            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + TAU</div></div>
+            <div class="a ctrl"><div class="n">50</div><div class="l">TAU / Waitlist</div></div>
+          </div>
+        </div>
+        <div class="site">
+          <span class="flag">🇺🇸</span><span class="role gen">Generalizability</span>
+          <div class="stitle">US cohort</div>
+          <div class="stotal"><b>100</b> total · replication & pooled support</div>
+          <div class="arm2">
+            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + TAU</div></div>
+            <div class="a ctrl"><div class="n">50</div><div class="l">TAU / Waitlist</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pooled">
+        <span class="lab">Korea + US Pooled →</span>
+        <span class="big">100 intervention + 100 control = 200</span>
+        <span class="lab">(site-adjusted)</span>
+      </div>
+
+      <div class="subh">Power</div>
+      <table class="pwr">
+        <thead><tr><th>Analysis</th><th>N (per arm)</th><th>Power (d=0.5)</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>Korea alone</td><td>100 (50/50)</td><td class="hi">≈ 80%</td><td>Primary conclusion</td></tr>
+          <tr><td>US alone</td><td>100 (50/50)</td><td class="hi">≈ 80%</td><td>Replication · generalizability</td></tr>
+          <tr><td>Korea + US pooled</td><td>200 (100/100)</td><td class="hi">&gt; 95%</td><td>Confirmatory + subgroup</td></tr>
+        </tbody>
+      </table>
+      <p class="sec-desc" style="margin-left:0;margin-top:12px;">Assumptions: two-sided α=0.05 · ANCOVA (baseline-adjusted, r≈0.5) · 1:1. Diagnosis handled as covariate.</p>
+
+      <div class="subh">Diagnosis Distribution — pre-specified quotas (hybrid)</div>
+      <table>
+        <thead><tr><th>Diagnosis</th><th>Korea (per arm)</th><th>US (per arm)</th><th>Pooled</th></tr></thead>
+        <tbody>
+          <tr><td>ASD</td><td>40 (20)</td><td>40 (20)</td><td>80</td></tr>
+          <tr><td>CP</td><td>28 (14)</td><td>28 (14)</td><td>56</td></tr>
+          <tr><td>DCD</td><td>20 (10)</td><td>20 (10)</td><td>40</td></tr>
+          <tr><td>Other IDD (Down etc.)</td><td>12 (6)</td><td>12 (6)</td><td>24</td></tr>
+          <tr><td style="color:var(--accent-2)"><b>Total</b></td><td><b>100 (50)</b></td><td><b>100 (50)</b></td><td><b>200</b></td></tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        ⚠️ <b>Hybrid rule</b>: cap the dominant diagnosis (ASD), floor the rare ones so no subgroup is empty. ASD is intentionally under-sampled vs true prevalence (cap) → run a prevalence-weighted sensitivity analysis on the pooled set.<br>
+        ⚠️ Power is computed on <b>completers</b>, so allow 15–20% dropout by enrolling <b>~60 per arm per site</b> (target 50 completers).
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">6</div><h2>Analysis Strategy</h2></div>
+      <div class="steps">
+        <div class="step"><span class="badge">Primary</span><h4>Primary Analysis</h4><p>Compare change in hand function / ADL between arms across the full Korean sample.</p></div>
+        <div class="step"><span class="badge">Adjustment</span><h4>Covariate Adjustment</h4><p>Adjust for diagnosis · age · baseline hand function · cognitive level · behavior/attention.</p></div>
+        <div class="step"><span class="badge">Subgroup</span><h4>Subgroup (Exploratory)</h4><p>Report CP / ASD / Down·DCD separately — kept exploratory, not over-claimed.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">7</div><h2>Outcomes</h2></div>
+      <div class="tier">
+        <div class="tier-label t-pri">Primary<small>main endpoint</small></div>
+        <div class="tier-body"><b>ADL · functional hand use</b> — with diverse diagnoses, CP-centric tools like QUEST may fit some subgroups poorly.
+          <div class="pills"><span class="pill acc">PEDI</span><span class="pill acc">PMAL</span><span class="pill acc">COPM</span><span class="pill acc">ABILHAND-Kids (review)</span></div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-label t-sec">Secondary<small>hand function</small></div>
+        <div class="tier-body">Performance-based hand-function measures
+          <div class="pills"><span class="pill">BBT</span><span class="pill">FDT</span><span class="pill">grip / pinch</span><span class="pill">video-based scoring</span></div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-label t-exp">Exploratory<small>mechanistic</small></div>
+        <div class="tier-body">Mechanism &amp; usage data
+          <div class="pills"><span class="pill">EEG</span><span class="pill">neural connectivity</span><span class="pill">app logs</span><span class="pill">sessions</span><span class="pill">adherence</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="invite" style="border-left-color:var(--accent-2);background:linear-gradient(90deg,rgba(51,214,166,.12),rgba(51,214,166,0));">🧪 <b style="color:#5be3c0;">Pilot underway</b> (Severance) — N=27 · CP 70% / ASD 30% · Primary: AROM, Box &amp; Blocks · Secondary: EEG. The strengthening & decisions below are for the <b style="color:#5be3c0;">main study (N=200)</b>.</div>
+      <div class="sec-head"><div class="sec-num">8</div><h2>Methodological Strengthening (confirmatory-grade)</h2></div>
+      <p class="sec-desc">Per expert review — 6 locked decisions that move it from "exploratory" to "confirmatory-ready"</p>
+      <div class="upg">
+        <div class="upgi"><div class="t">① Control · Blinding</div>
+          <div class="ba"><span class="tag no">Now</span><span>TAU/Waitlist · unblinded → expectancy bias</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Active/Sham app comparator + blinded assessor</span></div></div>
+        <div class="upgi"><div class="t">② Primary outcome</div>
+          <div class="ba"><span class="tag no">Now</span><span>AROM·Box&amp;Blocks (impairment/performance)</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Add a functional/ADL primary + MCID (reimbursement case)</span></div></div>
+        <div class="upgi"><div class="t">③ Power assumptions</div>
+          <div class="ba"><span class="tag no">Now</span><span>Assumed d & dropout</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Recompute from pilot (N=27) effect size + cluster (ICC)/dropout realism</span></div></div>
+        <div class="upgi"><div class="t">④ Entry criterion</div>
+          <div class="ba"><span class="tag no">Now</span><span>"manual dexterity impairment" vague</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Objective tool + cutoff (e.g., ≤5th %ile)</span></div></div>
+        <div class="upgi"><div class="t">⑤ Diagnostic heterogeneity</div>
+          <div class="ba"><span class="tag no">Now</span><span>CP 70% + ASD 30% mix</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Pre-specify diagnosis×treatment interaction or pick a lead diagnosis</span></div></div>
+        <div class="upgi"><div class="t">⑥ EEG biomarker</div>
+          <div class="ba"><span class="tag no">Now</span><span>collected as secondary only</span></div>
+          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Pre-define key EEG endpoint/biomarker + pilot feasibility</span></div></div>
+      </div>
+      <div class="note">📋 Also lock: pre-registration (ClinicalTrials.gov+CRIS) · SAP · estimand (ICH E9-R1) · central allocation/concealment · ITT&amp;PP · adherence definition · safety monitoring · (if two-country) TAU harmonization & measurement invariance · health-economic outcomes.</div>
+    </section>
+
+    <section>
+      <div class="sec-head"><div class="sec-num">9</div><h2>Open Decisions — for Partner-Professor Discussion</h2></div>
+      <p class="sec-desc">To resolve before locking the N=200 protocol · chip = 🟣 needs consensus / 🟠 needs pilot data</p>
+      <div class="dec">
+        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">1</span><h4>Indication scope</h4></div>
+          <div class="opts"><span class="o">Keep CP-led</span><span class="o">CP only</span><span class="o">More ASD (funder)</span></div>
+          <div class="rec"><b>Tension</b>: product mechanism (CP) & rigor ↔ funder (현대해상 = ASD). Keep 70/30 in the main study?</div>
+          <div class="pick"><b>✅ Rec</b>: <b>keep CP-led</b> + pre-specify diagnosis×treatment interaction. Product strength & pilot evidence are CP; ASD as exploratory.</div></div>
+        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">2</span><h4>Primary outcome</h4></div>
+          <div class="opts"><span class="o">Keep AROM·BBT</span><span class="o">+ functional/ADL</span><span class="o">ABILHAND-Kids</span></div>
+          <div class="rec"><b>Tension</b>: AROM·BBT are impairment-level → policy/reimbursement needs <b>function/ADL</b>. Lock which as primary?</div>
+          <div class="pick"><b>✅ Rec</b>: primary = <b>ABILHAND-Kids</b> (functional, cross-diagnosis); key secondary = <b>Box&amp;Blocks</b>; AROM → secondary.</div></div>
+        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">3</span><h4>Control arm</h4></div>
+          <div class="opts"><span class="o">Active/Sham app</span><span class="o">Waitlist</span><span class="o">TAU only</span></div>
+          <div class="rec"><b>Tension</b>: sham = best rigor but dev cost/ethics. Waitlist = biased.</div>
+          <div class="pick"><b>✅ Rec</b>: <b>Active/Sham app + blinded assessor</b>. If dev cost is prohibitive, use an attention-matched active control.</div></div>
+        <div class="dcard"><span class="chip data">data</span><div class="qn"><span class="qnum">4</span><h4>Entry cutoff</h4></div>
+          <div class="opts"><span class="o">≤5th %ile</span><span class="o">≤16th %ile</span><span class="o">clinical judgment</span></div>
+          <div class="rec"><b>Tension</b>: stricter = more homogeneous/reproducible, slower recruitment. On which tool?</div>
+          <div class="pick"><b>✅ Rec</b>: <b>≤16th %ile (−1SD)</b> — balances homogeneity & recruitment; report MACS level for CP.</div></div>
+        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">5</span><h4>Two-country vs Korea-only</h4></div>
+          <div class="opts"><span class="o">Korea+US 200</span><span class="o">Korea only</span></div>
+          <div class="rec"><b>Tension</b>: generalizability ↔ non-equivalent TAU, FDA/IRB, cost, won't publish as one.</div>
+          <div class="pick"><b>✅ Rec</b>: <b>Korea-only</b> for the main study (funder & Severance-based); US as a later separate generalization study.</div></div>
+        <div class="dcard"><span class="chip data">data</span><div class="qn"><span class="qnum">6</span><h4>Key EEG biomarker</h4></div>
+          <div class="opts"><span class="o">Mu suppression</span><span class="o">Connectivity</span><span class="o">ERP</span></div>
+          <div class="rec"><b>Tension</b>: feasibility in 4–8yo NDD (artifact/cooperation). See which the pilot captures.</div>
+          <div class="pick"><b>✅ Rec</b>: <b>sensorimotor Mu-rhythm suppression</b> as the key EEG (tied to motor mechanism); connectivity secondary. Confirm feasibility in pilot.</div></div>
+        <div class="dcard"><span class="chip data">data</span><div class="qn"><span class="qnum">7</span><h4>Dose · duration</h4></div>
+          <div class="opts"><span class="o">12 wks</span><span class="o">8 wks</span><span class="o">16 wks</span></div>
+          <div class="rec"><b>Tension</b>: clinical basis for the "400 reps" dose vs home-adherence limits.</div>
+          <div class="pick"><b>✅ Rec</b>: <b>12 weeks</b> (motor-learning standard) + adherence monitoring & minimum-dose sensitivity analysis.</div></div>
+        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">8</span><h4>Follow-up (durability)</h4></div>
+          <div class="opts"><span class="o">12 wks</span><span class="o">24 wks</span><span class="o">52 wks</span></div>
+          <div class="rec"><b>Tension</b>: claiming lasting plasticity needs long follow-up ↔ dropout/cost.</div>
+          <div class="pick"><b>✅ Rec</b>: <b>24-week follow-up</b> (durability vs dropout balance); optional 52-week if feasible.</div></div>
+      </div>
+    </section>
+
+    <div class="conclusion">
+      <h2>📌 Conclusion</h2>
+      <p style="margin:0;color:#dde2ec;">Rather than narrowing to CP only, <b>broaden the diagnoses but bind them under the shared criterion of “manual dexterity impairment.”</b><br>The following <b>must be in the protocol from the start</b>:</p>
+      <div class="stamp">Stratified Randomization &nbsp;+&nbsp; Diagnosis-wise Adjustment &nbsp;+&nbsp; Subgroup Analysis</div>
+    </div>
+  </div>
+
+  <footer>GemGem400 · Research Design Summary · 2026</footer>
+</div>
+
+<script>
+  function setLang(l){
+    document.querySelectorAll('.lang').forEach(x=>x.classList.remove('active'));
+    document.getElementById(l).classList.add('active');
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('[data-ko]').forEach(el=>{
+      el.innerHTML = el.getAttribute(l==='ko'?'data-ko':'data-en');
+    });
+    document.documentElement.lang = l;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
