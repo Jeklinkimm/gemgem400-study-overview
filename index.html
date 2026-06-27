@@ -317,6 +317,7 @@
         </tbody>
       </table>
       <div class="note">⚠️ N=200에 층화 요인을 다 넣으면 셀이 비어 배정이 깨짐 → <b>층화는 [국가 + 진단] 2개로 압축</b>, 나머지는 분석 시 ANCOVA 공변량으로 보정.</div>
+      <div class="note" style="border-left-color:var(--accent);background:rgba(91,140,255,.08);">🏥 <b>다기관 처리 3원칙</b>: ① 무작위배정은 <b>각 사이트 내에서</b> (사이트=군 교란 금지) ② <b>사이트를 random effect</b>로 모형화 + 국가 1차 층화 ③ <b>site × treatment 상호작용 사전명시</b> (권역 간 일관성 점검).</div>
     </section>
 
     <!-- 표본수 산정 -->
@@ -378,6 +379,15 @@
         ⚠️ <b>하이브리드 원칙</b>: 우세 진단(ASD)에 상한, 희소 진단에 하한을 둬 subgroup이 비지 않게 함. ASD는 실제 유병률보다 의도적으로 적게 잡힘(상한) → pooled에서 유병률 가중 민감도분석 권장.<br>
         ⚠️ 검정력은 <b>completer(분석대상) 기준</b>이라, 탈락 15–20%를 감안해 <b>사이트당 군당 약 60명 등록</b>(완료 50명 목표)으로 버퍼를 둘 것.
       </div>
+
+      <div class="subh">다기관 구성 — 6개 사이트 (한국 3 + 미국 3)</div>
+      <div class="grid g2">
+        <div class="card"><h3>🇰🇷 한국 3곳</h3>
+          <ul class="clean"><li>신촌 세브란스 — 수도권·도시</li><li>원주 세브란스 — 강원/지방·준농촌</li><li>영남 또는 호남 1곳 <i>(가안)</i> — 제3권역·소아재활</li></ul></div>
+        <div class="card"><h3>🇺🇸 미국 3곳</h3>
+          <ul class="clean"><li>Utah — 서부 (의료기관)</li><li>Delaware — 동부 · U of Delaware PT 프로그램(평가·모집 강점)</li><li>의료기관 1곳 <i>(가안: CHOP 또는 U of Kansas Med Ctr)</i> — EEG·진단·안전 + 다양성</li></ul></div>
+      </div>
+      <div class="note">📍 지역다양성: 한국 수도권+지방, 미국 동·서 확보. 3번째는 한국=제3권역, 미국=<b>인종·SES 다양 권역</b>으로 채워 가이드 다기관(≥3)·일반화 기준 충족.</div>
     </section>
 
     <section>
@@ -494,7 +504,7 @@
           <tr><td>9 통계</td><td>SAP 사전등록 + ITT + 1차분석 명시 ★</td><td>SAP · ITT&amp;PP · ANCOVA · 다중비교보정</td><td class="hi">✅</td></tr>
           <tr><td>10 보건경제성</td><td>지불자관점 직접비용 + QALY(EQ-5D-Y/HUI3) ★</td><td>EQ-5D-Y QALY + 직·간접비용 수집</td><td style="color:var(--warn)">❗→반영</td></tr>
           <tr><td>11 윤리·규제</td><td>IRB + CRIS/ClinicalTrials 등록 + 대리동의·Assent ★</td><td>IRB · CRIS 등록 · 만5–6 그림카드 Assent · COI</td><td class="hi">✅</td></tr>
-          <tr><td>12 일반화·정책</td><td>지역·SES 다양성 + SCI/SCIE 게재계획 ★</td><td>미국 ≥3기관 · SCI/SCIE 계획 · <b>국내 서울 단일</b></td><td style="color:var(--warn)">⚠️</td></tr>
+          <tr><td>12 일반화·정책</td><td>지역·SES 다양성 + SCI/SCIE 게재계획 ★</td><td>한·미 각 3기관(신촌·원주·+1 / Utah·Delaware·의료기관) · SCI/SCIE 계획</td><td class="hi">✅ 계획</td></tr>
         </tbody>
       </table>
 
@@ -507,7 +517,7 @@
         <div class="upgi"><div class="t">용량 기준</div><div class="ba"><span class="tag yes">반영</span><span>1일 400회 능동반복(소요시간 아동별 상이) · 부모 동반</span></div></div>
         <div class="upgi"><div class="t">스크린타임 모니터링</div><div class="ba"><span class="tag yes">반영</span><span>월 1회 설문 · 총 &gt;90분/일 시 경고·상담</span></div></div>
       </div>
-      <div class="note">📋 추가 확정: 최소표본 군당 80(총 160) — 우리 200(군당 100) 충족 / <b>SCI·SCIE 게재계획 수립</b>(Domain 12 필수) / CONSORT 2025·SPIRIT 2013 기반 프로토콜(권장).<br>⚠️ 미해결: 국내 단일기관(서울 세브란스)으로는 <b>한국 지역다양성(수도권+지방+농촌)</b> 미달 → 비수도권 1곳 추가 또는 한계점 명시 필요.</div>
+      <div class="note">📋 추가 확정: 최소표본 군당 80(총 160) — 우리 200(군당 100) 충족 / <b>SCI·SCIE 게재계획 수립</b>(Domain 12 필수) / CONSORT 2025·SPIRIT 2013 기반 프로토콜(권장).<br>✅ 해결방향: 국내 3기관(신촌 수도권 + 원주 강원 + 제3권역) · 미국 3기관(Utah·Delaware·의료기관). <b>3번째만 권역·다양성 기준으로 확정</b>하면 됨.</div>
     </section>
 
     <div class="conclusion">
@@ -603,6 +613,7 @@
         </tbody>
       </table>
       <div class="note">⚠️ Stratifying on all 5 factors with N=200 empties cells → <b>stratify on [country + diagnosis] only</b>; adjust the rest as ANCOVA covariates.</div>
+      <div class="note" style="border-left-color:var(--accent);background:rgba(91,140,255,.08);">🏥 <b>Multi-site rules</b>: ① randomize <b>within each site</b> (never site=arm) ② model <b>site as a random effect</b> + country as primary stratifier ③ pre-specify the <b>site × treatment interaction</b> (consistency across regions).</div>
     </section>
 
     <!-- Sample size -->
@@ -664,6 +675,15 @@
         ⚠️ <b>Hybrid rule</b>: cap the dominant diagnosis (ASD), floor the rare ones so no subgroup is empty. ASD is intentionally under-sampled vs true prevalence (cap) → run a prevalence-weighted sensitivity analysis on the pooled set.<br>
         ⚠️ Power is computed on <b>completers</b>, so allow 15–20% dropout by enrolling <b>~60 per arm per site</b> (target 50 completers).
       </div>
+
+      <div class="subh">Multi-site structure — 6 sites (Korea 3 + US 3)</div>
+      <div class="grid g2">
+        <div class="card"><h3>🇰🇷 Korea ×3</h3>
+          <ul class="clean"><li>Sinchon Severance — capital · urban</li><li>Wonju Severance — Gangwon / provincial · semi-rural</li><li>1 southern site <i>(TBD)</i> — 3rd region · pediatric rehab</li></ul></div>
+        <div class="card"><h3>🇺🇸 US ×3</h3>
+          <ul class="clean"><li>Utah — West (medical)</li><li>Delaware — East · U of Delaware PT program (assessment/recruitment)</li><li>1 medical center <i>(TBD: CHOP or U of Kansas Med Ctr)</i> — EEG·diagnosis·safety + diversity</li></ul></div>
+      </div>
+      <div class="note">📍 Diversity: Korea covers capital+provincial; US covers East+West. The 3rd site fills the gap — Korea = a 3rd region, US = a <b>racially/SES-diverse</b> metro — meeting the guideline's multi-site (≥3) & generalizability bar.</div>
     </section>
 
     <section>
@@ -780,7 +800,7 @@
           <tr><td>9 Statistics</td><td>Pre-registered SAP + ITT + primary analysis ★</td><td>SAP · ITT&amp;PP · ANCOVA · multiplicity control</td><td class="hi">✅</td></tr>
           <tr><td>10 Health econ.</td><td>Payer-perspective costs + QALY (EQ-5D-Y/HUI3) ★</td><td>EQ-5D-Y QALY + direct/indirect costs</td><td style="color:var(--warn)">❗→added</td></tr>
           <tr><td>11 Ethics</td><td>IRB + CRIS/ClinicalTrials reg. + consent·assent ★</td><td>IRB · CRIS reg. · age 5–6 picture-card assent · COI</td><td class="hi">✅</td></tr>
-          <tr><td>12 Generaliz.·policy</td><td>Regional·SES diversity + SCI/SCIE publication plan ★</td><td>US ≥3 sites · SCI/SCIE plan · <b>Korea single (Seoul)</b></td><td style="color:var(--warn)">⚠️</td></tr>
+          <tr><td>12 Generaliz.·policy</td><td>Regional·SES diversity + SCI/SCIE publication plan ★</td><td>3 sites each (Sinchon·Wonju·+1 / Utah·Delaware·med ctr) · SCI/SCIE plan</td><td class="hi">✅ planned</td></tr>
         </tbody>
       </table>
 
@@ -793,7 +813,7 @@
         <div class="upgi"><div class="t">Dose standard</div><div class="ba"><span class="tag yes">done</span><span>400 active reps/day (time varies per child) · parent-assisted</span></div></div>
         <div class="upgi"><div class="t">Screen-time monitoring</div><div class="ba"><span class="tag yes">done</span><span>Monthly survey · alert & counseling if total &gt;90 min/day</span></div></div>
       </div>
-      <div class="note">📋 Also locked: minimum ≥80/arm (160 total) — our 200 (100/arm) meets it / <b>SCI·SCIE publication plan</b> (Domain 12 mandatory) / CONSORT 2025·SPIRIT 2013-based protocol (recommended).<br>⚠️ Open: a single Korean site (Severance, Seoul) does not meet <b>Korean regional diversity</b> (capital + provincial + rural) → add a non-capital site or state as a limitation.</div>
+      <div class="note">📋 Also locked: minimum ≥80/arm (160 total) — our 200 (100/arm) meets it / <b>SCI·SCIE publication plan</b> (Domain 12 mandatory) / CONSORT 2025·SPIRIT 2013-based protocol (recommended).<br>✅ Resolved: 3 Korean sites (Sinchon capital + Wonju Gangwon + 3rd region) · 3 US sites (Utah·Delaware·medical center). <b>Only the 3rd site of each</b> remains to be confirmed by region/diversity.</div>
     </section>
 
     <div class="conclusion">
