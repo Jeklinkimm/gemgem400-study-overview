@@ -1,812 +1,508 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>GemGem400 Study Overview</title>
+<title>SPACE 2 현재까지 논의된 내용 정리 — 2026-08-05</title>
+<meta name="robots" content="noindex">
 <style>
   :root{
-    --bg:#0f1115; --panel:#171a21; --panel-2:#1d212b; --line:#2a2f3a;
-    --txt:#eef1f6; --muted:#a6afbd; --accent:#5b8cff; --accent-2:#33d6a6;
-    --warn:#ff8a65; --purple:#b388ff; --pill:#242a38;
-    --shadow:0 10px 36px rgba(0,0,0,.38); --radius:18px;
+    --ink:#1B1710; --ink-soft:#4A4336; --ink-faint:#8A8170;
+    --paper:#FBF9F4; --line:#E4DFD2;
+    --green:#17594A; --blue:#2B4C7E; --red:#BE3418; --gold:#B98A2E;
+    --card:#FFFFFF;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;font-size:18px;}
+  *{box-sizing:border-box}
   body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Pretendard",Roboto,"Helvetica Neue",Arial,"Noto Sans KR",sans-serif;
-    background:radial-gradient(1300px 700px at 80% -10%,#1b2230 0%,var(--bg) 55%);
-    color:var(--txt); line-height:1.8; -webkit-font-smoothing:antialiased;
+    margin:0; padding:40px 24px 80px; background:var(--paper); color:var(--ink);
+    font-family:'Pretendard','Apple SD Gothic Neo',-apple-system,sans-serif;
+    line-height:1.6;
   }
-  .wrap{max-width:1120px;margin:0 auto;padding:40px 24px 100px;}
-  header.hero{text-align:center;padding:32px 18px 10px;}
+  .wrap{max-width:960px; margin:0 auto}
+  header{margin-bottom:24px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px}
   .kicker{
-    display:inline-block;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--accent-2);background:rgba(51,214,166,.1);
-    border:1px solid rgba(51,214,166,.25);padding:8px 18px;border-radius:999px;margin-bottom:22px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.12em;
+    color:var(--ink-faint); text-transform:uppercase;
   }
-  .hero h1{font-size:clamp(28px,4.2vw,42px);line-height:1.35;margin:0 0 18px;font-weight:800;letter-spacing:-.01em;}
-  .hero p.sub{color:var(--muted);font-size:1.12rem;max-width:820px;margin:0 auto;line-height:1.7;}
-  .tabs{
-    position:sticky;top:0;z-index:30;display:flex;justify-content:center;gap:10px;
-    padding:18px 0 22px;margin:28px 0 10px;
-    background:linear-gradient(to bottom,var(--bg) 62%,rgba(15,17,21,0));
+  h1{font-size:28px; margin:10px 0 0; letter-spacing:-0.01em}
+
+  .tabbar{display:flex; gap:6px; flex-shrink:0}
+  .tab-btn{
+    font-family:inherit; font-size:15px; width:30px; height:30px; padding:0;
+    border-radius:8px; border:1px solid var(--line); background:var(--card);
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    opacity:.5; line-height:1;
   }
-  .tab{
-    cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--muted);
-    padding:13px 34px;border-radius:999px;font-weight:700;font-size:1.05rem;transition:.18s;
+  .tab-btn.active{opacity:1; border-color:var(--ink); box-shadow:0 0 0 1px var(--ink) inset}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
+
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px}
+  @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; align-items:stretch}
+  @media (max-width:720px){.split{grid-template-columns:1fr}}
+  .split-head{
+    font-size:14px; font-weight:800; padding:11px 14px; border-radius:8px;
+    text-align:center; letter-spacing:.02em; color:#fff;
   }
-  .tab:hover{color:var(--txt);border-color:var(--accent);}
-  .tab.active{background:linear-gradient(135deg,var(--accent),#6f7bff);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(91,140,255,.4);}
-  .lang{display:none;}
-  .lang.active{display:block;animation:fade .3s ease;}
-  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
-  section{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:34px 36px 38px;margin:24px 0;box-shadow:var(--shadow);}
-  .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:8px;}
-  .sec-num{flex:0 0 auto;width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#0f1115;background:linear-gradient(135deg,var(--accent-2),#5be3c0);}
-  .sec-head h2{font-size:1.55rem;margin:0;font-weight:800;letter-spacing:-.01em;}
-  .sec-desc{color:var(--muted);font-size:1.02rem;margin:4px 0 24px 62px;line-height:1.65;}
-  @media(max-width:680px){.sec-desc{margin-left:0;}}
-  .keypoint{border-left:5px solid var(--accent-2);background:linear-gradient(90deg,rgba(51,214,166,.13),rgba(51,214,166,0));padding:22px 26px;border-radius:12px;margin:4px 0;font-size:1.18rem;line-height:1.75;}
-  .keypoint b{color:var(--accent-2);}
-  .grid{display:grid;gap:18px;}
-  .grid.g2{grid-template-columns:repeat(2,1fr);}
-  @media(max-width:760px){.grid.g2{grid-template-columns:1fr;}}
-  .card{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:24px;}
-  .card h3{margin:0 0 16px;font-size:1.15rem;display:flex;align-items:center;gap:10px;}
-  .dot{width:11px;height:11px;border-radius:50%;display:inline-block;}
-  .d-in{background:var(--accent-2);} .d-ex{background:var(--warn);}
-  ul.clean{list-style:none;margin:0;padding:0;}
-  ul.clean li{padding:11px 0 11px 26px;position:relative;font-size:1.05rem;color:#dde2ec;border-bottom:1px dashed rgba(255,255,255,.06);line-height:1.5;}
-  ul.clean li:last-child{border-bottom:none;}
-  ul.clean li:before{content:"";position:absolute;left:4px;top:19px;width:9px;height:9px;border-radius:2px;background:var(--accent);}
-  ul.clean.ex li:before{background:var(--warn);}
-  .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
-  .pill{background:var(--pill);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:1rem;color:#d4dbe8;}
-  .pill.acc{border-color:rgba(91,140,255,.45);color:#c4d4ff;}
-  .flow{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:10px;}
-  .node{width:100%;max-width:580px;text-align:center;border-radius:14px;padding:20px 22px;font-weight:700;font-size:1.1rem;border:1px solid var(--line);background:var(--panel-2);}
-  .node.pop{background:linear-gradient(135deg,#23304a,#1d2738);border-color:rgba(91,140,255,.45);}
-  .node small{display:block;font-weight:500;color:var(--muted);font-size:.92rem;margin-top:7px;line-height:1.5;}
-  .arrow{position:relative;width:2px;height:38px;background:var(--accent);margin:4px 0;}
-  .arrow:after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--accent);}
-  .branch{position:relative;width:100%;max-width:680px;height:52px;margin:4px 0 0;}
-  .branch .stem{position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:24px;background:var(--accent);}
-  .branch .bar{position:absolute;top:24px;left:25%;right:25%;height:2px;background:var(--accent);}
-  .branch .drop{position:absolute;top:24px;width:2px;height:28px;background:var(--accent);}
-  .branch .drop.l{left:25%;} .branch .drop.r{right:25%;}
-  .branch .drop:after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid var(--accent);}
-  @media(max-width:560px){.branch{display:none;}}
-  .rand{background:linear-gradient(135deg,#3a2a55,#2a2140);border-color:rgba(179,136,255,.5);color:#ece2ff;}
-  .split{display:flex;gap:20px;width:100%;max-width:680px;justify-content:center;margin-top:8px;}
-  .split .node{flex:1;}
-  .node.arm-a{background:linear-gradient(135deg,#16493c,#14352c);border-color:rgba(51,214,166,.5);}
-  .node.arm-b{background:linear-gradient(135deg,#3d2b1c,#33271d);border-color:rgba(255,138,101,.45);}
-  .vs{align-self:center;font-weight:800;color:var(--muted);font-size:1rem;}
-  @media(max-width:560px){.split{flex-direction:column;}.vs{transform:rotate(0);}}
-  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:1.05rem;overflow:hidden;border-radius:12px;}
-  th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line);}
-  thead th{background:var(--panel-2);color:var(--accent-2);font-size:.92rem;letter-spacing:.05em;text-transform:uppercase;}
-  tbody tr:hover{background:rgba(91,140,255,.07);}
-  td:first-child{font-weight:700;color:#d4dbe8;width:38%;}
-  .tier{display:flex;align-items:stretch;gap:18px;margin:16px 0;}
-  @media(max-width:680px){.tier{flex-direction:column;}.tier-label{flex-basis:auto;flex-direction:row;gap:8px;}}
-  .tier-label{flex:0 0 160px;border-radius:13px;display:flex;flex-direction:column;justify-content:center;padding:16px 18px;font-weight:800;font-size:1.1rem;}
-  .t-pri{background:linear-gradient(135deg,var(--accent),#6f7bff);color:#fff;}
-  .t-sec{background:linear-gradient(135deg,var(--accent-2),#39c9a0);color:#0f1115;}
-  .t-exp{background:linear-gradient(135deg,var(--purple),#9d6bff);color:#fff;}
-  .tier-label small{font-weight:600;font-size:.82rem;opacity:.88;display:block;margin-top:3px;}
-  .tier-body{flex:1;background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:18px 22px;font-size:1.05rem;line-height:1.6;}
-  .tier-body .pills{margin-top:12px;}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px;}
-  @media(max-width:760px){.steps{grid-template-columns:1fr;}}
-  .step{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;}
-  .step .badge{font-size:.82rem;color:var(--accent);font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
-  .step h4{margin:9px 0 11px;font-size:1.18rem;}
-  .step p{margin:0;font-size:1.02rem;color:var(--muted);line-height:1.6;}
+  .split-head.kr{background:var(--green)}
+  .split-head.us{background:var(--blue)}
 
-  /* Sample size */
-  .ss-top{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:stretch;}
-  @media(max-width:820px){.ss-top{grid-template-columns:1fr;}}
-  .assump{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:8px 22px;}
-  .assump .row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 0;border-bottom:1px dashed rgba(255,255,255,.07);font-size:1.05rem;}
-  .assump .row:last-child{border-bottom:none;}
-  .assump .row span:first-child{color:var(--muted);}
-  .assump .row b{color:#cfe0ff;font-size:1.1rem;font-weight:700;}
-  .bignum{background:linear-gradient(160deg,#1d3a52,#16273a);border:1px solid rgba(91,140,255,.5);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 20px;}
-  .bignum .lab{color:var(--accent-2);font-size:1rem;font-weight:700;letter-spacing:.04em;}
-  .bignum .num{font-size:3.6rem;font-weight:800;line-height:1.05;margin:8px 0 2px;background:linear-gradient(135deg,#7fa8ff,#33d6a6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-  .bignum .sub{color:var(--muted);font-size:.98rem;}
-  .calc{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin-top:22px;}
-  .calc .box{flex:1;min-width:150px;background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:18px 16px;text-align:center;}
-  .calc .box .t{color:var(--muted);font-size:.92rem;margin-bottom:8px;line-height:1.4;}
-  .calc .box .v{font-size:1.7rem;font-weight:800;color:#cfe0ff;}
-  .calc .box .v small{font-size:.85rem;color:var(--muted);font-weight:600;display:block;margin-top:3px;}
-  .calc .op{display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:var(--accent);font-weight:800;padding:0 12px;}
-  @media(max-width:680px){.calc{flex-direction:column;}.calc .op{padding:8px 0;transform:rotate(90deg);}}
-  .note{margin-top:18px;color:var(--muted);font-size:.98rem;line-height:1.6;background:rgba(255,138,101,.08);border-left:4px solid var(--warn);padding:14px 18px;border-radius:10px;}
-  .note b{color:#ffd3c2;}
-  .invite{border-left:5px solid var(--accent);background:linear-gradient(90deg,rgba(91,140,255,.12),rgba(91,140,255,0));padding:20px 24px;border-radius:12px;margin-bottom:22px;font-size:1.08rem;line-height:1.7;}
-  .invite b{color:#c4d4ff;}
-  .glance{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:4px;}
-  @media(max-width:880px){.glance{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:520px){.glance{grid-template-columns:1fr;}}
-  .gi{background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:16px 18px;}
-  .gi .k{font-size:.78rem;color:var(--accent-2);font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
-  .gi .v{font-size:1.05rem;font-weight:700;margin-top:7px;color:#eef1f6;line-height:1.4;}
-  .gi .v small{display:block;font-weight:500;color:var(--muted);font-size:.85rem;margin-top:3px;}
-  .sec-num.star{background:linear-gradient(135deg,var(--accent),#6f7bff);color:#fff;}
-  .upg{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-  @media(max-width:760px){.upg{grid-template-columns:1fr;}}
-  .upgi{background:var(--panel-2);border:1px solid var(--line);border-radius:13px;padding:16px 18px;}
-  .upgi .t{font-weight:800;font-size:1.05rem;margin-bottom:12px;}
-  .upgi .ba{display:flex;gap:10px;align-items:flex-start;font-size:.96rem;line-height:1.5;color:#dde2ec;}
-  .upgi .tag{flex:0 0 auto;font-weight:800;font-size:.72rem;padding:3px 9px;border-radius:6px;margin-top:2px;}
-  .tag.no{background:rgba(255,138,101,.16);color:#ffa98f;}
-  .tag.yes{background:rgba(51,214,166,.16);color:#5be3c0;}
-  .dec{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  @media(max-width:760px){.dec{grid-template-columns:1fr;}}
-  .dcard{background:var(--panel-2);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:14px;padding:20px;position:relative;}
-  .dcard .qn{display:flex;gap:10px;align-items:center;margin-bottom:6px;padding-right:74px;}
-  .dcard .qnum{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex:0 0 auto;}
-  .dcard h4{margin:0;font-size:1.1rem;}
-  .dcard .opts .o{display:inline-block;background:var(--pill);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.88rem;margin:5px 5px 0 0;color:#cfd6e4;}
-  .dcard .rec{font-size:.92rem;color:var(--muted);line-height:1.55;margin-top:12px;border-top:1px dashed rgba(255,255,255,.08);padding-top:10px;}
-  .dcard .rec b{color:var(--accent-2);}
-  .chip{position:absolute;top:18px;right:18px;font-size:.7rem;font-weight:800;padding:4px 11px;border-radius:999px;}
-  .chip.disc{background:rgba(179,136,255,.16);color:#cdb4ff;}
-  .chip.data{background:rgba(255,138,101,.16);color:#ffb59e;}
-  .pick{margin-top:10px;font-size:.92rem;color:#d7efe6;background:rgba(51,214,166,.1);border:1px solid rgba(51,214,166,.25);border-radius:9px;padding:8px 12px;line-height:1.55;}
-  .pick b{color:#5be3c0;}
-  .tl{display:flex;align-items:stretch;flex-wrap:wrap;margin-top:10px;}
-  .tlstep{flex:1;min-width:170px;background:var(--panel-2);border:1px solid var(--line);border-top:3px solid var(--accent-2);border-radius:13px;padding:18px;text-align:center;}
-  .tlstep .d{font-weight:800;color:var(--accent-2);font-size:1.05rem;}
-  .tlstep .t{color:#dde2ec;font-size:.98rem;margin-top:8px;line-height:1.45;}
-  .tlar{display:flex;align-items:center;color:var(--accent-2);font-size:1.5rem;font-weight:800;padding:0 12px;}
-  @media(max-width:680px){.tlar{transform:rotate(90deg);padding:8px 0;}}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px;
+  }
+  .split .card.kr{border-left:3px solid var(--green)}
+  .split .card.us{border-left:3px solid var(--blue)}
 
-  /* Site allocation */
-  .sites{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px;}
-  @media(max-width:680px){.sites{grid-template-columns:1fr;}}
-  .site{border-radius:16px;padding:22px;border:1px solid var(--line);background:var(--panel-2);position:relative;}
-  .site.primary{border-color:rgba(91,140,255,.55);background:linear-gradient(160deg,#1d3050,#172234);box-shadow:0 0 0 1px rgba(91,140,255,.15) inset;}
-  .site .flag{font-size:1.3rem;}
-  .site .role{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:999px;margin-left:8px;vertical-align:middle;}
-  .role.pri{background:var(--accent);color:#fff;}
-  .role.gen{background:#3a4254;color:#cfd6e4;}
-  .site .stitle{font-size:1.2rem;font-weight:800;margin:14px 0 4px;}
-  .site .stotal{color:var(--muted);font-size:1rem;}
-  .site .stotal b{color:#cfe0ff;font-size:1.35rem;}
-  .arm2{display:flex;gap:12px;margin-top:16px;}
-  .arm2 .a{flex:1;border-radius:11px;padding:14px 10px;text-align:center;font-weight:700;}
-  .arm2 .a.int{background:linear-gradient(135deg,#16493c,#14352c);border:1px solid rgba(51,214,166,.45);}
-  .arm2 .a.ctrl{background:linear-gradient(135deg,#3d2b1c,#33271d);border:1px solid rgba(255,138,101,.4);}
-  .arm2 .a .n{font-size:1.7rem;font-weight:800;line-height:1;}
-  .arm2 .a .l{font-size:.82rem;color:var(--muted);margin-top:6px;}
-  .pooled{margin-top:18px;background:linear-gradient(135deg,rgba(91,140,255,.16),rgba(179,136,255,.12));border:1px solid rgba(91,140,255,.4);border-radius:14px;padding:18px 22px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center;}
-  .pooled .big{font-size:1.6rem;font-weight:800;color:#cfe0ff;}
-  .pooled .lab{color:var(--muted);font-size:1rem;}
-  .pwr td:first-child{width:34%;}
-  .pwr .hi{color:var(--accent-2);font-weight:700;}
-  .subh{font-size:1.12rem;font-weight:800;margin:30px 0 8px;display:flex;align-items:center;gap:10px;}
-  .subh:before{content:"";width:5px;height:18px;border-radius:3px;background:var(--accent-2);}
+  .ticket-row{display:flex; flex-direction:column; gap:14px; margin:28px 0 16px}
+  .card h2{
+    font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint);
+    margin:0 0 10px; font-weight:700;
+  }
+  .card .big{font-size:20px; font-weight:700; margin-bottom:4px}
+  .card p{margin:4px 0; font-size:14.5px; color:var(--ink-soft)}
+  .split .card .big{font-size:17px}
+  .tag{
+    display:inline-block; font-size:11px; font-weight:700; padding:2px 8px;
+    border-radius:999px; margin-right:6px; margin-bottom:4px;
+  }
+  .tag.done{background:#E3EBE2; color:var(--green)}
+  .tag.open{background:#FBEAE5; color:var(--red)}
+  .tag.warn{background:#F6EEDC; color:var(--gold)}
+  .full{grid-column:1 / -1}
+  ul{margin:6px 0; padding-left:18px}
+  li{margin-bottom:5px; font-size:14.5px; color:var(--ink-soft)}
+  .split li{font-size:13.5px}
+  .site-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+  .site{
+    background:var(--paper); border:1px solid var(--line); border-radius:8px;
+    padding:8px 12px; font-size:13px; flex:1; min-width:150px; text-align:center;
+    line-height:1.45;
+  }
+  .site .flag{font-size:18px}
+  .site .site-name{display:block; font-size:13.5px; font-weight:600; margin-top:2px}
+  .site .site-who{display:block; color:var(--ink-faint); font-size:12px}
+  .site a{color:inherit; text-decoration:none; border-bottom:1px dotted var(--ink-faint)}
+  .site a:hover{border-bottom-style:solid}
+  footer{
+    margin-top:24px; font-size:12px; color:var(--ink-faint);
+    border-top:1px solid var(--line); padding-top:14px;
+  }
 
-  .conclusion{background:linear-gradient(135deg,rgba(91,140,255,.13),rgba(179,136,255,.1));border:1px solid rgba(91,140,255,.3);border-radius:var(--radius);padding:30px 34px;margin-top:24px;}
-  .conclusion h2{margin:0 0 14px;font-size:1.4rem;}
-  .conclusion p{font-size:1.1rem;line-height:1.75;}
-  .conclusion .stamp{display:inline-block;background:#0f1115;border:1px solid var(--accent);color:#c4d4ff;padding:12px 22px;border-radius:12px;font-weight:700;margin-top:14px;font-size:1.05rem;}
-  footer{text-align:center;color:var(--muted);font-size:.92rem;margin-top:50px;}
+  /* --- 가속도계 후보 비교 아코디언 --- */
+  details.accordion{
+    border:1px solid var(--line); border-radius:10px; background:var(--card); overflow:hidden;
+  }
+  details.accordion summary{
+    cursor:pointer; padding:14px 20px; font-weight:700; font-size:14.5px;
+    list-style:none; display:flex; align-items:center; gap:8px; color:var(--ink);
+  }
+  details.accordion summary::-webkit-details-marker{display:none}
+  details.accordion summary::before{content:"▸"; font-size:11px; color:var(--ink-faint); transition:transform .15s; flex-shrink:0}
+  details.accordion[open] summary::before{transform:rotate(90deg)}
+  .acc-body{padding:2px 20px 18px; border-top:1px solid var(--line)}
+  .acc-intro{font-size:13px; color:var(--ink-faint); margin:14px 0}
+
+  .acc-tabbar{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px}
+  .acc-tab-btn{
+    font-family:inherit; font-size:12.5px; font-weight:600; padding:6px 12px;
+    border-radius:999px; border:1px solid var(--line); background:var(--paper);
+    cursor:pointer; color:var(--ink-soft);
+  }
+  .acc-tab-btn.active{background:var(--ink); border-color:var(--ink); color:#fff}
+  .acc-panel{display:none}
+  .acc-panel.active{display:block}
+
+  .cmp-table{width:100%; border-collapse:collapse; font-size:13px}
+  .cmp-table th, .cmp-table td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+  .cmp-table th{background:var(--paper); font-weight:700; color:var(--ink-soft); font-size:11.5px; text-transform:uppercase; letter-spacing:.02em}
+  .cmp-table td.verdict{font-weight:700}
+  .cmp-table tr.rec td.verdict{color:var(--green)}
+  .cmp-table tr.next td.verdict{color:var(--blue)}
+  .cmp-table tr.out td.verdict{color:var(--ink-faint)}
+
+  .device-head{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+  .device-head .name{font-size:16px; font-weight:800}
+  .device-head .origin{font-size:12.5px; color:var(--ink-faint)}
+  .badge{display:inline-block; font-size:11px; font-weight:700; padding:2px 9px; border-radius:999px}
+  .badge.rec{background:#E3EBE2; color:var(--green)}
+  .badge.next{background:#E7EEF6; color:var(--blue)}
+  .badge.alt{background:#F6EEDC; color:var(--gold)}
+  .badge.hold{background:#F1EEE7; color:var(--ink-faint)}
+  .badge.out{background:#FBEAE5; color:var(--red)}
+
+  .spec-row{display:grid; grid-template-columns:100px 1fr; gap:8px; font-size:13.5px; margin:0 0 8px; padding-bottom:8px; border-bottom:1px dashed var(--line)}
+  .spec-row dt{color:var(--ink-faint); font-weight:600}
+  .spec-row dd{margin:0; color:var(--ink-soft)}
+  .device-comment{font-size:13.5px; color:var(--ink-soft); margin:10px 0}
+
+  .research-links{list-style:none; margin:8px 0 0; padding:0}
+  .research-links li{font-size:12.5px; margin-bottom:6px; padding-left:16px; position:relative; color:var(--ink-soft)}
+  .research-links li::before{content:"↗"; position:absolute; left:0; color:var(--ink-faint)}
+  .research-links a{color:var(--blue); text-decoration:none; border-bottom:1px dotted var(--blue)}
+  .research-links a:hover{border-bottom-style:solid}
+  .research-links .src{color:var(--ink-faint)}
+
+  .rec-block{margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid var(--line)}
+  .rec-block:last-child{border-bottom:none; margin-bottom:0; padding-bottom:0}
+  .rec-block .rank{font-size:12px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; margin-bottom:4px}
+  .rec-block.p1 .rank{color:var(--green)}
+  .rec-block.p2 .rank{color:var(--blue)}
+  .rec-block.p3 .rank{color:var(--gold)}
+  .rec-block ul{margin:6px 0 0}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="hero">
-    <span class="kicker" data-ko="연구 설계 개요" data-en="Study Design Overview">Study Design Overview</span>
-    <h1 data-ko="자폐스펙트럼장애(ASD) 아동의 손 조작 기능 저하 개선을 위한<br>AI 기반 게임형 재활 중재 효과성 연구"
-        data-en="Effects of an AI-Powered Game-Based Hand Functional Training Intervention<br>on Manual Dexterity Impairment in Children with Autism Spectrum Disorder (ASD)">
-      Effects of an AI-Powered Game-Based Hand Functional Training Intervention<br>on Manual Dexterity Impairment in Children with Autism Spectrum Disorder (ASD)
-    </h1>
-    <p class="sub" data-ko="적응증은 자폐스펙트럼장애(ASD) 단일로 좁히고, 소근육(fine motor) 저하라는 기능 기준을 진입 게이트로 결합하는 설계"
-       data-en="Narrow the indication to autism spectrum disorder (ASD) alone, and pair it with a single functional entry gate — manual dexterity impairment.">
-      Narrow the indication to autism spectrum disorder (ASD) alone, and pair it with a single functional entry gate — manual dexterity impairment.
-    </p>
+
+  <header>
+    <div class="topbar">
+      <div class="kicker">GemGem400 × 아이마음 탐사대 SPACE 2</div>
+      <div class="tabbar">
+        <button class="tab-btn active" data-tab="ko" title="한국어">🇰🇷</button>
+        <button class="tab-btn" data-tab="en" title="English">🇺🇸</button>
+      </div>
+    </div>
+    <h1 id="title-h1">현재까지 논의된 내용 정리 (2026-08-05 기준)</h1>
   </header>
 
-  <div class="tabs">
-    <div class="tab active" onclick="setLang('en')">🇺🇸 English</div>
-    <div class="tab" onclick="setLang('ko')">🇰🇷 한국어</div>
-  </div>
+  <!-- ================= 한국어 ================= -->
+  <div class="tab-panel active" id="tab-ko">
 
-  <!-- KOREAN -->
-  <div class="lang" id="ko">
-    <section>
-      <div class="invite">🤝 본 문서는 <b>미국 재활의학 임상기관 협력(공동연구·대상자 등록)</b>을 위한 연구 개요입니다. 소아 손기능 재활에 관심 있는 임상의 선생님들의 참여를 환영합니다.</div>
-      <div class="sec-head"><div class="sec-num star">★</div><h2>연구 한눈에 보기</h2></div>
-      <div class="glance">
-        <div class="gi"><div class="k">연구 설계</div><div class="v">다기관 RCT<small>한국 · 미국</small></div></div>
-        <div class="gi"><div class="k">대상</div><div class="v">ASD 아동 만 3–7세<small>소근육(fine motor) 저하 동반</small></div></div>
-        <div class="gi"><div class="k">표본수</div><div class="v">총 200명<small>한국 100 + 미국 100</small></div></div>
-        <div class="gi"><div class="k">중재</div><div class="v">GemGem400 가정 사용<small>1일 400회 능동반복 · 부모 동반 · 12주(3개월)</small></div></div>
-        <div class="gi"><div class="k">1차 결과</div><div class="v">Box & Blocks (손 기민성)<small>2차: ABILHAND·AROM · VABS(장기)·EEG</small></div></div>
-        <div class="gi"><div class="k">평가 시점</div><div class="v">기저 · 12주 · 추적<small>약 24주 추적</small></div></div>
-        <div class="gi"><div class="k">착수</div><div class="v">2026. 7 ~<small>설계 → IRB → 모집</small></div></div>
-        <div class="gi"><div class="k">연구비</div><div class="v">₩5.0억<small>1인당 한국 ₩200만 · 미국 $2,000</small></div></div>
-      </div>
-      <div class="subh">주요 일정 (Timeline)</div>
-      <div class="tl">
-        <div class="tlstep"><div class="d">2026. 7</div><div class="t">연구 설계 논의</div></div>
-        <div class="tlar">→</div>
-        <div class="tlstep"><div class="d">2026. 8. 30</div><div class="t">연구계획서 내부 제출</div></div>
-        <div class="tlar">→</div>
-        <div class="tlstep"><div class="d">2026. 11</div><div class="t">IRB 승인 완료 · 대상자 모집 시작</div></div>
-      </div>
-    </section>
-    <section>
-      <div class="keypoint">
-        핵심은 진단명을 넓히는 것이 아니라 <b>“자폐스펙트럼장애(ASD) 단일 진단 + 손 조작 기능 저하”</b>로 좁히는 것.<br>
-        <b>적응증과 기능 기준을 모두 하나로 고정</b>한다.
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">1</div><h2>대상군</h2></div>
-      <p class="sec-desc">만 3–7세 ASD(자폐스펙트럼장애) 아동 중 <b style="color:var(--accent-2)">소근육(fine motor) 저하</b>가 확인된 아동 (조기개입 연령대)</p>
-      <div class="grid g2">
-        <div class="card">
-          <h3>포함 진단</h3>
-          <div class="pills">
-            <span class="pill acc">ASD · 자폐스펙트럼장애 (단일)</span>
-          </div>
-        </div>
-        <div class="card" style="display:flex;align-items:center;">
-          <p style="margin:0;font-size:1.08rem;color:#dde2ec;line-height:1.7;">⚠️ <b style="color:var(--accent-2)">ASD 진단 + 손기능 저하</b>, 두 조건을 모두 만족해야 함.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">2</div><h2>포함 / 제외 기준</h2></div>
-      <div class="grid g2">
-        <div class="card">
-          <h3><span class="dot d-in"></span> 포함 기준</h3>
-          <ul class="clean">
-            <li>만 3–7세</li><li>ASD(자폐스펙트럼장애) 진단 (DSM-5 / ICD-11)</li><li>소근육(fine motor) 저하 — 표준검사 ≤16%ile</li>
-            <li>간단한 지시 이해 가능</li><li>보호자 도움 하 1일 400회 능동반복 수행 가능</li><li>가정 내 주 5회 이상 사용 가능</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3><span class="dot d-ex"></span> 제외 기준</h3>
-          <ul class="clean ex">
-            <li>조절되지 않는 발작</li><li>심한 시각 / 청각 문제</li><li>중증 행동문제 (게임 수행 방해)</li>
-            <li>최근 보톡스 / 수술 / 집중 상지치료</li><li>평가 불가능한 인지 / 행동 수준</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">3</div><h2>연구 설계 — RCT</h2></div>
-      <p class="sec-desc">한국 데이터만으로 유의미해야 하므로, 국내에서 충분한 표본 확보가 필수</p>
-      <div class="flow">
-        <div class="node pop">ASD + 소근육 저하 아동 (만 3–7세)<small>한·미 통합 코호트</small></div>
-        <div class="arrow"></div>
-        <div class="node rand">층화 블록 무작위배정<small>Stratified Block Randomization</small></div>
-        <div class="branch"><span class="stem"></span><span class="bar"></span><span class="drop l"></span><span class="drop r"></span></div>
-        <div class="split">
-          <div class="node arm-a">실험군<small>GemGem400 + TAU</small></div>
-          <div class="vs">VS</div>
-          <div class="node arm-b">능동대조군<small>일반 교육앱 + TAU</small></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">4</div><h2>랜덤화 — 층화 기준</h2></div>
-      <p class="sec-desc">그냥 무작위 배정 ❌ — 같은 국가·같은 진단 안에서 군 비율이 비슷하도록 배정</p>
-      <table>
-        <thead><tr><th>요인</th><th>구분</th><th>처리</th></tr></thead>
-        <tbody>
-          <tr><td>국가 (site)</td><td>한국 / 미국</td><td>층화 ✓</td></tr>
-          <tr><td>연령</td><td>만 3–4세 / 만 5–7세</td><td>공변량 보정</td></tr>
-          <tr><td>인지수준</td><td>지시 이해 가능 / 보조 필요</td><td>공변량 보정</td></tr>
-          <tr><td>Baseline 손기능</td><td>경도 / 중등도</td><td>공변량 보정</td></tr>
-        </tbody>
-      </table>
-      <div class="note">⚠️ 적응증이 ASD 단일로 좁혀져 진단 층화는 불필요해짐 → <b>층화는 [국가] 하나로 단순화</b>, 나머지(연령·인지수준·baseline 손기능)는 분석 시 ANCOVA 공변량으로 보정.</div>
-      <div class="note" style="border-left-color:var(--accent);background:rgba(91,140,255,.08);">🏥 <b>다기관 처리 3원칙</b>: ① 무작위배정은 <b>각 사이트 내에서</b> (사이트=군 교란 금지) ② <b>사이트를 random effect</b>로 모형화 + 국가 1차 층화 ③ <b>site × treatment 상호작용 사전명시</b> (권역 간 일관성 점검).</div>
-    </section>
-
-    <!-- 표본수 산정 -->
-    <section>
-      <div class="sec-head"><div class="sec-num">5</div><h2>표본수 산정 — 2개국 설계</h2></div>
-      <p class="sec-desc">한국 100(세브란스 60 + 지방 40) + 미국 100(3곳) = 총 200명 · 사이트 내 1:1 배정 · 1차 분석 한·미 통합</p>
-
-      <div class="sites">
-        <div class="site">
-          <span class="flag">🇰🇷</span><span class="role gen">한국 100</span>
-          <div class="stitle">한국 코호트 (2개 기관)</div>
-          <div class="stotal">세브란스 <b>60</b> + 지방병원 <b>40</b> · ₩200만/인</div>
-          <div class="arm2">
-            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + 일반치료</div></div>
-            <div class="a ctrl"><div class="n">50</div><div class="l">교육앱 + 일반치료</div></div>
-          </div>
-        </div>
-        <div class="site primary">
-          <span class="flag">🇺🇸</span><span class="role pri">미국 100</span>
-          <div class="stitle">미국 코호트 (3개 기관)</div>
-          <div class="stotal">Utah · Delaware · TBD · $2,000/인</div>
-          <div class="arm2">
-            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + 일반치료</div></div>
-            <div class="a ctrl"><div class="n">50</div><div class="l">교육앱 + 일반치료</div></div>
-          </div>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h2>대상</h2>
+        <div class="big">자폐 단일 (운동협응장애 동반), 만 4–7세</div>
+        <p>뇌성마비는 이번 연구에서 완전히 제외</p>
+        <span class="tag done">확정</span>
       </div>
 
-      <div class="pooled">
-        <span class="lab">한·미 Pooled →</span>
-        <span class="big">실험 100 + 대조 100 = 200명</span>
-        <span class="lab">(site 보정 분석)</span>
+      <div class="card">
+        <h2>인터벤션 구성</h2>
+        <div class="big">주 5회, 회당 소근육 400회 + 대근육 세션</div>
+        <p>유타 자체 파일럿이 5회/주로 운영 중이며 순응도가 좋게 나오고 있어 5회로 확정 — 대근육
+        세션 길이는 아직 정해야 함</p>
+        <span class="tag done">빈도 확정</span>
+        <span class="tag warn">세션 길이 미정</span>
       </div>
 
-      <div class="subh">검정력 (Power)</div>
-      <table class="pwr">
-        <thead><tr><th>분석</th><th>N (군당)</th><th>검정력 (d=0.5)</th><th>역할</th></tr></thead>
-        <tbody>
-          <tr><td>한·미 통합 (1차)</td><td>200 (100/100)</td><td class="hi">&gt; 90%</td><td>Primary 결론</td></tr>
-          <tr><td>한국 기여</td><td>100 (50/50)</td><td>—</td><td>국내 근거 · 층화</td></tr>
-          <tr><td>미국 기여</td><td>100 (50/50)</td><td>—</td><td>다인종 · 일반화</td></tr>
-        </tbody>
-      </table>
-      <p class="sec-desc" style="margin-left:0;margin-top:12px;">가정: 양측 α=0.05 · ANCOVA(baseline 보정, r≈0.5) · 1:1 배정. 진단군은 공변량으로 보정.</p>
-
-      <div class="subh">적응증 — ASD 단일</div>
-      <div class="note">포함 게이트 = <b>ASD(자폐스펙트럼장애) 확정진단 + 소근육 저하</b>. 2026-07 결정으로 CP·DCD·다운 등 타 진단은 본 연구(N=200) 대상에서 제외(단, 파일럿의 EEG 등 기전 데이터는 CP 근거로 별도 전용 가능). 검정력은 completer 기준이라 탈락 15–20% 대비 <b>등록 버퍼</b> 둘 것. 효과크기는 파일럿(세브란스 N=27, CP70%/ASD30%)의 ASD 서브그룹 데이터를 우선 참고해 재산출.</div>
-
-      <div class="subh">다기관 구성 — 5개 사이트 (한국 2 + 미국 3)</div>
-      <div class="grid g2">
-        <div class="card"><h3>🇰🇷 한국 2곳 · 100명</h3>
-          <ul class="clean"><li>신촌 세브란스 (수도권) — 60명 (30/30)</li><li>원주 세브란스 (강원·지방) — 40명 (20/20)</li></ul></div>
-        <div class="card"><h3>🇺🇸 미국 3곳 · 100명</h3>
-          <ul class="clean"><li>Utah 34(17/17) · Delaware 34(17/17) · TBD 32(16/16)</li><li><i>3번째 사이트 미확정</i></li></ul></div>
+      <div class="card full">
+        <h2>왜 투 트랙인가</h2>
+        <p>한·미 데이터를 하나로 합치지 않고 <b>독립된 두 트랙으로 운영</b> — 신뢰도와 논문 발행
+        유연성 면에서 더 유리하다는 판단</p>
       </div>
-      <div class="note">💰 예산: 한국 100명×<b>₩200만/인</b> + 미국 100명×<b>$2,000/인</b> = <b>₩5.0억</b> (≈ $333K). · 📍 지역다양성: 한국 수도권+지방, 미국 다기관(≥3)·다인종.</div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">6</div><h2>분석 전략</h2></div>
-      <div class="steps">
-        <div class="step"><span class="badge">Primary</span><h4>주 분석</h4><p>전체 한국 대상자에서 GemGem400군 vs 대조군의 손기능·ADL 변화 비교.</p></div>
-        <div class="step"><span class="badge">Adjustment</span><h4>공변량 보정</h4><p>진단군 · 나이 · baseline 손기능 · 인지수준 · 행동/주의 문제를 보정.</p></div>
-        <div class="step"><span class="badge">Subgroup</span><h4>하위군 (탐색적)</h4><p>성별·baseline 손기능 중증도별로 따로 보되, 메인 결론으로 과하게 주장하지 않음.</p></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">7</div><h2>Outcome</h2></div>
-      <div class="tier">
-        <div class="tier-label t-pri">Primary<small>주 결과변수</small></div>
-        <div class="tier-body"><b>Box & Blocks Test (수행 기반 손 기민성)</b> — 400회 반복 중재에 <b>가장 반응성</b>↑ · 객관적 · 평가자 맹검 · 파일럿 검증. 단일 1차 + MCID 사전정의.
-          <div class="pills"><span class="pill acc">Box&Blocks(BBT)</span><span class="pill acc">단일 1차·객관</span><span class="pill acc">평가자 맹검</span></div>
-        </div>
-      </div>
-      <div class="tier">
-        <div class="tier-label t-sec">Secondary<small>손기능 · 수행</small></div>
-        <div class="tier-body">기능적 손사용 + 수행
-          <div class="pills"><span class="pill">ABILHAND-Kids(기능)</span><span class="pill">AROM</span><span class="pill">grip / pinch</span><span class="pill">VABS-II(장기 ADL)</span></div>
-        </div>
-      </div>
-      <div class="tier">
-        <div class="tier-label t-exp">Exploratory<small>탐색적</small></div>
-        <div class="tier-body">기전 · 사용 데이터
-          <div class="pills"><span class="pill">EEG</span><span class="pill">neural connectivity</span><span class="pill">앱 로그</span><span class="pill">수행 횟수</span><span class="pill">순응도</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="invite" style="border-left-color:var(--accent-2);background:linear-gradient(90deg,rgba(51,214,166,.12),rgba(51,214,166,0));">🧪 <b style="color:#5be3c0;">현재 파일럿 진행 중</b> (세브란스) — N=27 · CP 70% / ASD 30% · 1차: AROM, Box &amp; Blocks · 2차: EEG. 아래 보강·결정은 <b style="color:#5be3c0;">본 연구(N=200)</b> 설계를 위한 것.</div>
-      <div class="sec-head"><div class="sec-num">8</div><h2>방법론 보강 (확증연구 등급)</h2></div>
-      <p class="sec-desc">전문가 리뷰 반영 — "탐색"에서 "확증 가능"으로 끌어올리는 6개 잠금 결정</p>
-      <div class="upg">
-        <div class="upgi"><div class="t">① 대조군 · 맹검</div>
-          <div class="ba"><span class="tag no">현재</span><span>TAU/Waitlist · 비맹검 → 기대편향</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>Active/Sham 앱 대조 + 평가자 맹검</span></div></div>
-        <div class="upgi"><div class="t">② 1차 결과지표</div>
-          <div class="ba"><span class="tag no">현재</span><span>AROM·Box&amp;Blocks (손상·수행 수준)</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>1차 = <b>반응성 손기능(Box & Blocks)</b> · 기능(ABILHAND)·ADL(VABS 장기)은 2차 + MCID</span></div></div>
-        <div class="upgi"><div class="t">③ 검정력 가정</div>
-          <div class="ba"><span class="tag no">현재</span><span>d·탈락률 가정값</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>파일럿(N=27) 효과크기로 재계산 + 군집(ICC)·탈락 현실화</span></div></div>
-        <div class="upgi"><div class="t">④ 진입 기준</div>
-          <div class="ba"><span class="tag no">현재</span><span>"손기능 저하" 모호</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>객관적 도구·컷오프 명시 (예: ≤5%ile)</span></div></div>
-        <div class="upgi"><div class="t">⑤ 진단 이질성</div>
-          <div class="ba"><span class="tag no">현재</span><span>CP 70% + ASD 30% 혼합 (파일럿)</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>본 연구(N=200)는 ASD 단일 진단으로 이질성 자체가 해소(2026-07 결정) — 파일럿의 CP 데이터는 기전(EEG) 근거로만 별도 활용</span></div></div>
-        <div class="upgi"><div class="t">⑥ EEG 바이오마커</div>
-          <div class="ba"><span class="tag no">현재</span><span>2차로만 수집</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">보강</span><span>주요 EEG 엔드포인트·바이오마커 사전정의 + 파일럿 검증</span></div></div>
-      </div>
-      <div class="note">📋 추가 잠금: 사전등록(ClinicalTrials.gov+CRIS)·SAP·Estimand(ICH E9-R1)·중앙배정/배정은닉·ITT&amp;PP·순응도 정의·안전성 모니터링·(2개국 시) TAU통일·측정동등성·건강경제 결과.</div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">9</div><h2>아직 결정이 필요한 사항 — 교수님 논의용</h2></div>
-      <p class="sec-desc">본 연구(N=200) 프로토콜 확정 전 합의 필요 · 칩 = 🟣 교수 합의 / 🟠 파일럿 데이터 필요</p>
-      <div class="dec">
-        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">1</span><h4>적응증 범위</h4></div>
-          <div class="opts"><span class="o">ASD 단일 (확정)</span><span class="o">IDD 확장 유지</span><span class="o">CP 주력 유지</span></div>
-          <div class="rec"><b>쟁점(결정 전)</b>: 제품 기전(CP)·완성도 ↔ 펀더(현대해상=ASD) 정렬. IDD로 넓힐지, ASD로 좁힐지.</div>
-          <div class="pick"><b>✅ 확정(2026-07-22)</b>: 적응증을 <b>ASD 단일</b>로 좁힘. CP·DCD·다운 등은 본 연구 대상에서 제외(파일럿의 EEG 등 기전 데이터는 CP 근거로 별도 전용 가능). 대신 <b>대근육(gross motor) 게임을 결합</b>해 ASD 아동의 소근육 단독 과제 이탈률 이슈에 대응.</div></div>
-        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">2</span><h4>1차 결과지표</h4></div>
-          <div class="opts"><span class="o">AROM·BBT 유지</span><span class="o">VABS-II 일상생활</span><span class="o">ABILHAND-Kids</span></div>
-          <div class="rec"><b>쟁점</b>: AROM·BBT는 손상·수행 수준 → 급여·정책엔 <b>기능/ADL</b>이 필요. 가이드 디지털 1차 권고=VABS-II.</div>
-          <div class="pick"><b>✅ 확정</b>: 1차 = <b>Box & Blocks</b>(반응성·객관·파일럿), 2차 = <b>ABILHAND-Kids(기능)·AROM</b>, VABS는 장기 ADL 2차, 탐색 = EEG.</div></div>
-        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">3</span><h4>대조군 형태</h4></div>
-          <div class="opts"><span class="o">Active/Sham 앱</span><span class="o">Waitlist</span><span class="o">TAU only</span></div>
-          <div class="rec"><b>쟁점</b>: Sham이 완성도 최상이나 개발비·윤리. Waitlist는 편향 큼.</div>
-          <div class="pick"><b>✅ 추천</b>: <b>Active/Sham 앱 + 평가자 맹검</b>. 개발비 부담 시 '주의 일치' 활성대조로 대체.</div></div>
-        <div class="dcard"><span class="chip data">데이터</span><div class="qn"><span class="qnum">4</span><h4>진입 컷오프</h4></div>
-          <div class="opts"><span class="o">≤5%ile</span><span class="o">≤16%ile</span><span class="o">임상판단</span></div>
-          <div class="rec"><b>쟁점</b>: 엄격할수록 동질·재현↑·모집↓. 어느 도구로 컷오프 잡을지.</div>
-          <div class="pick"><b>✅ 추천</b>: <b>≤16%ile(−1SD)</b> — 동질성과 모집 균형.</div></div>
-        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">5</span><h4>2개국 vs 한국 단독</h4></div>
-          <div class="opts"><span class="o">한·미 200 (유지)</span><span class="o">한국 단독</span></div>
-          <div class="rec"><b>쟁점</b>: 일반화 ↔ TAU 비등가·FDA/IRB·비용.</div>
-          <div class="pick"><b>✅ 확정</b>: <b>한·미 유지</b> — 미국 ≥3기관으로 다기관(가이드 권장 ≥3)·일반화 충족. ⚠️ 국내는 서울(세브란스) 단일 → 한국 지역다양성 미달, 비수도권 1곳 추가 검토.</div></div>
-        <div class="dcard"><span class="chip data">데이터</span><div class="qn"><span class="qnum">6</span><h4>EEG 주요 바이오마커</h4></div>
-          <div class="opts"><span class="o">Mu 억제</span><span class="o">연결성</span><span class="o">ERP</span></div>
-          <div class="rec"><b>쟁점</b>: 3–7세 ASD 측정 실현가능성(잡파·협조). 파일럿(세브란스)서 어느 지표가 잡히는지 확인.</div>
-          <div class="pick"><b>✅ 추천</b>: <b>감각운동 Mu 리듬 억제</b>를 주(主)EEG로(운동 기전과 직결), 연결성은 2차. 파일럿서 실현가능성 확정.</div></div>
-        <div class="dcard"><span class="chip data">데이터</span><div class="qn"><span class="qnum">7</span><h4>중재 용량·기간</h4></div>
-          <div class="opts"><span class="o">12주</span><span class="o">8주</span><span class="o">16주</span></div>
-          <div class="rec"><b>쟁점</b>: "400회" dose의 임상 근거 + 가정 순응 한계 균형.</div>
-          <div class="pick"><b>✅ 추천</b>: <b>12주</b>(운동학습 표준) + 순응도 모니터링·최소용량 민감도분석.</div></div>
-        <div class="dcard"><span class="chip disc">논의</span><div class="qn"><span class="qnum">8</span><h4>추적기간 (지속성)</h4></div>
-          <div class="opts"><span class="o">12주</span><span class="o">24주</span><span class="o">52주</span></div>
-          <div class="rec"><b>쟁점</b>: 가소성 지속 주장하려면 장기 추적 ↔ 탈락·비용.</div>
-          <div class="pick"><b>✅ 추천</b>: <b>24주 추적</b>(지속성 입증과 탈락 균형). 가능하면 52주 선택적.</div></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">10</div><h2>가이드라인 정합성 점검 (SPACE 2 · 12 Domain)</h2></div>
-      <p class="sec-desc">아이마음 탐사대 [별첨2] 연구설계 가이드라인 기준 · ✅ 부합 / ⚠️ 권장 미달 / ❗ 보완 반영 (★ = 필수)</p>
-      <table>
-        <thead><tr><th>Domain</th><th>가이드 기준 (★필수)</th><th>우리 반영</th><th>상태</th></tr></thead>
-        <tbody>
-          <tr><td>1 설계</td><td>RCT + 기관수 + 기간 명시 ★</td><td>다기관 RCT · 12주 + 24주 추적</td><td class="hi">✅</td></tr>
-          <tr><td>2 대상·배정</td><td>DSM-5/ICD-11 포함·제외 + 배정은폐 ★</td><td>DSM-5/ICD-11 · 중앙배정·은폐 · 국가×진단 층화</td><td class="hi">✅</td></tr>
-          <tr><td>3 표본</td><td>총 160 · 군당 80 + power≥80% ★</td><td>200 (군당 100)</td><td class="hi">✅ 초과</td></tr>
-          <tr><td>4 중재 표준화</td><td>매뉴얼 + 제공자 자격 + 대조군 명세 ★</td><td>매뉴얼화 · 능동대조(교육앱) · 버전고정</td><td class="hi">✅</td></tr>
-          <tr><td>5 결과변수</td><td>단일 1차 + 사전등록 + 검증도구(α≥0.80) ★</td><td>Box & Blocks 단일 1차(반응성·객관) · ABILHAND/VABS 2차</td><td class="hi">✅</td></tr>
-          <tr><td>6 평가시점</td><td>기저 + 추적, 시점 사전정의 ★</td><td>T0 · 12주 · 종료3개월(24주) ±1주</td><td class="hi">✅</td></tr>
-          <tr><td>7 맹검</td><td>평가자–치료사 분리 + 평가자 맹검 ★</td><td>평가자 맹검 · 디지털 맹검강화</td><td class="hi">✅</td></tr>
-          <tr><td>8 데이터</td><td>표준화 CRF ★</td><td>전기관 통일 CRF · 결측 처리기준</td><td class="hi">✅</td></tr>
-          <tr><td>9 통계</td><td>SAP 사전등록 + ITT + 1차분석 명시 ★</td><td>SAP · ITT&amp;PP · ANCOVA · 다중비교보정</td><td class="hi">✅</td></tr>
-          <tr><td>10 보건경제성</td><td>지불자관점 직접비용 + QALY(EQ-5D-Y/HUI3) ★</td><td>EQ-5D-Y QALY + 직·간접비용 수집</td><td style="color:var(--warn)">❗→반영</td></tr>
-          <tr><td>11 윤리·규제</td><td>IRB + CRIS/ClinicalTrials 등록 + 대리동의·Assent ★</td><td>IRB · CRIS 등록 · 만5–6 그림카드 Assent · COI</td><td class="hi">✅</td></tr>
-          <tr><td>12 일반화·정책</td><td>지역·SES 다양성 + SCI/SCIE 게재계획 ★</td><td>한국 2기관(신촌·원주) + 미국 3기관 · SCI/SCIE 계획</td><td style="color:var(--warn)">⚠️ 국내 2권역</td></tr>
-        </tbody>
-      </table>
-
-      <div class="subh">디지털 중재 필수요건 (가이드 부록 B.2)</div>
-      <div class="upg">
-        <div class="upgi"><div class="t">능동 대조군</div><div class="ba"><span class="tag yes">반영</span><span>일반 교육앱(나이적합) → 위약효과 통제</span></div></div>
-        <div class="upgi"><div class="t">앱·AI 버전 고정</div><div class="ba"><span class="tag yes">반영</span><span>연구기간 버전·알고리즘 동결 (보안패치만 허용)</span></div></div>
-        <div class="upgi"><div class="t">순응도 3중 측정</div><div class="ba"><span class="tag yes">반영</span><span>자동로그(1일 400회 달성률) + 부모일지(주간) + 영상관찰 20%</span></div></div>
-        <div class="upgi"><div class="t">인앱 점수 금지</div><div class="ba"><span class="tag yes">반영</span><span>앱 내 과제점수=결과변수 불가 → 외부평가(VABS·BBT)로만</span></div></div>
-        <div class="upgi"><div class="t">용량 기준</div><div class="ba"><span class="tag yes">반영</span><span>1일 400회 능동반복(소요시간 아동별 상이) · 부모 동반</span></div></div>
-        <div class="upgi"><div class="t">스크린타임 모니터링</div><div class="ba"><span class="tag yes">반영</span><span>월 1회 설문 · 총 &gt;90분/일 시 경고·상담</span></div></div>
-      </div>
-      <div class="note">📋 추가 확정: 최소표본 군당 80(총 160) — 우리 200(군당 100) 충족 / <b>SCI·SCIE 게재계획 수립</b>(Domain 12 필수) / CONSORT 2025·SPIRIT 2013 기반 프로토콜(권장).<br>⚠️ 국내는 2권역(수도권 신촌 + 지방 원주)으로 가이드 권장 <b>≥3권역 미달</b> → 한계점 명시 또는 비수도권 1곳 추가 검토. 미국 3기관으로 전체 다기관(≥3)·다인종은 충족.</div>
-    </section>
-
-    <div class="conclusion">
-      <h2>📌 결론</h2>
-      <p style="margin:0;color:#dde2ec;">IDD를 넓게 보기보다, <b>ASD 단일 진단에 “손기능 저하”라는 기능 게이트를 결합해 강하게 좁히는 설계</b>.<br>단, 다음을 <b>처음부터 프로토콜에 박아야 함</b>:</p>
-      <div class="stamp">층화 무작위배정 &nbsp;+&nbsp; 공변량 보정 &nbsp;+&nbsp; Subgroup Analysis</div>
     </div>
-  </div>
 
-  <!-- ENGLISH -->
-  <div class="lang active" id="en">
-    <section>
-      <div class="invite">🤝 This is a study overview for <b>collaboration with US hand-function clinical sites (co-investigation / participant recruitment)</b>. Clinicians interested in pediatric hand functional training are warmly invited to take part.</div>
-      <div class="sec-head"><div class="sec-num star">★</div><h2>Study at a Glance</h2></div>
-      <div class="glance">
-        <div class="gi"><div class="k">Design</div><div class="v">Multi-site RCT<small>Korea · US</small></div></div>
-        <div class="gi"><div class="k">Population</div><div class="v">Children 3–7 with ASD<small>+ low fine-motor function</small></div></div>
-        <div class="gi"><div class="k">Sample</div><div class="v">200 total<small>Korea 100 + US 100</small></div></div>
-        <div class="gi"><div class="k">Intervention</div><div class="v">GemGem400 at home<small>400 active reps/day · parent-assisted · 12 wks (3 mo)</small></div></div>
-        <div class="gi"><div class="k">Primary outcome</div><div class="v">Box & Blocks (dexterity)<small>2nd: ABILHAND·AROM · VABS(long-term)·EEG</small></div></div>
-        <div class="gi"><div class="k">Assessments</div><div class="v">Baseline · 12 wk · follow-up<small>~24-wk follow-up</small></div></div>
-        <div class="gi"><div class="k">Kickoff</div><div class="v">Jul 2026 →<small>design → IRB → recruit</small></div></div>
-        <div class="gi"><div class="k">Budget</div><div class="v">₩500M<small>per child: Korea ₩2M · US $2,000</small></div></div>
+    <div class="split">
+      <div class="split-head kr">🇰🇷 한국 트랙 (온사이트)</div>
+      <div class="split-head us">🇺🇸 미국 트랙 (리모트)</div>
+
+      <div class="card kr">
+        <h2>표본 · 설계</h2>
+        <div class="big">온사이트, 3사이트 · 각 50명</div>
+        <p>계명대·아산병원·3번째 사이트 각 50명 + 사이트당 10명 추가 달성 시 인센(25%)</p>
+        <span class="tag done">확정</span>
       </div>
-      <div class="subh">Timeline</div>
-      <div class="tl">
-        <div class="tlstep"><div class="d">Jul 2026</div><div class="t">Study design discussion</div></div>
-        <div class="tlar">→</div>
-        <div class="tlstep"><div class="d">Aug 30, 2026</div><div class="t">Internal protocol submission</div></div>
-        <div class="tlar">→</div>
-        <div class="tlstep"><div class="d">Nov 2026</div><div class="t">IRB approval · recruitment starts</div></div>
+      <div class="card us">
+        <h2>표본 · 설계</h2>
+        <div class="big">리모트, 200명 (100/100)</div>
+        <p>델라웨어+유타 합산, RCT</p>
+        <span class="tag done">확정</span>
       </div>
-    </section>
-    <section>
-      <div class="keypoint">The key is not a broad developmental-disorder umbrella, but a single indication — <b>“autism spectrum disorder (ASD) with manual dexterity impairment.”</b><br>Both the <b>diagnosis and the functional criterion are now fixed to one.</b></div>
-    </section>
 
-    <section>
-      <div class="sec-head"><div class="sec-num">1</div><h2>Target Population</h2></div>
-      <p class="sec-desc">Children aged 3–7 with ASD and confirmed <b style="color:var(--accent-2)">low fine-motor function</b> (early-intervention age band)</p>
-      <div class="grid g2">
-        <div class="card">
-          <h3>Included Diagnosis</h3>
-          <div class="pills"><span class="pill acc">ASD (single indication)</span></div>
-        </div>
-        <div class="card" style="display:flex;align-items:center;">
-          <p style="margin:0;font-size:1.08rem;color:#dde2ec;line-height:1.7;">⚠️ Both criteria must be met:<br><b style="color:var(--accent-2)">ASD diagnosis + low fine-motor function</b>.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">2</div><h2>Inclusion / Exclusion</h2></div>
-      <div class="grid g2">
-        <div class="card">
-          <h3><span class="dot d-in"></span> Inclusion</h3>
-          <ul class="clean"><li>Age 3–7 years</li><li>ASD diagnosis (DSM-5 / ICD-11)</li><li>Low fine motor — ≤16th %ile on a standardized test</li><li>Understands simple instructions</li><li>Can complete ~400 active reps/day with caregiver</li><li>Home use ≥ 5×/week feasible</li></ul>
-        </div>
-        <div class="card">
-          <h3><span class="dot d-ex"></span> Exclusion</h3>
-          <ul class="clean ex"><li>Uncontrolled seizures</li><li>Severe visual / auditory impairment</li><li>Severe behavioral issues (block gameplay)</li><li>Recent botox / surgery / intensive UL therapy</li><li>Cognitive/behavioral level precluding assessment</li></ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">3</div><h2>Study Design — RCT</h2></div>
-      <p class="sec-desc">Must be powered on Korean data alone → secure an adequate domestic sample</p>
-      <div class="flow">
-        <div class="node pop">Children with ASD + low fine motor (age 3–7)<small>Korea + US pooled cohort</small></div>
-        <div class="arrow"></div>
-        <div class="node rand">Stratified Block Randomization<small>balanced within country × diagnosis</small></div>
-        <div class="branch"><span class="stem"></span><span class="bar"></span><span class="drop l"></span><span class="drop r"></span></div>
-        <div class="split">
-          <div class="node arm-a">Intervention<small>GemGem400 + TAU</small></div>
-          <div class="vs">VS</div>
-          <div class="node arm-b">Active control<small>general education app + TAU</small></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">4</div><h2>Randomization — Strata</h2></div>
-      <p class="sec-desc">No plain randomization ❌ — balance arms within each country × diagnosis cell</p>
-      <table>
-        <thead><tr><th>Factor</th><th>Categories</th><th>Handling</th></tr></thead>
-        <tbody>
-          <tr><td>Country (site)</td><td>Korea / US</td><td>Stratify ✓</td></tr>
-          <tr><td>Age</td><td>3–4 yrs / 5–7 yrs</td><td>Covariate</td></tr>
-          <tr><td>Cognitive level</td><td>Understands / Needs support</td><td>Covariate</td></tr>
-          <tr><td>Baseline hand function</td><td>Mild / Moderate</td><td>Covariate</td></tr>
-        </tbody>
-      </table>
-      <div class="note">⚠️ With the indication narrowed to ASD only, diagnosis stratification is no longer needed → <b>stratify on [country] only</b>; age, cognitive level, and baseline hand function are handled as ANCOVA covariates.</div>
-      <div class="note" style="border-left-color:var(--accent);background:rgba(91,140,255,.08);">🏥 <b>Multi-site rules</b>: ① randomize <b>within each site</b> (never site=arm) ② model <b>site as a random effect</b> + country as primary stratifier ③ pre-specify the <b>site × treatment interaction</b> (consistency across regions).</div>
-    </section>
-
-    <!-- Sample size -->
-    <section>
-      <div class="sec-head"><div class="sec-num">5</div><h2>Sample Size — Two-Country Design</h2></div>
-      <p class="sec-desc">Korea 100 (Severance 60 + provincial 40) + US 100 (3 sites) = 200 total · 1:1 within site · pooled Korea+US primary analysis</p>
-
-      <div class="sites">
-        <div class="site">
-          <span class="flag">🇰🇷</span><span class="role gen">Korea 100</span>
-          <div class="stitle">Korea cohort (2 sites)</div>
-          <div class="stotal">Severance <b>60</b> + provincial <b>40</b> · ₩2M/child</div>
-          <div class="arm2">
-            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + usual care</div></div>
-            <div class="a ctrl"><div class="n">50</div><div class="l">Education app + usual care</div></div>
+      <div class="card kr">
+        <h2>사이트 구성</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name"><a href="https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=QXcvMFhUaXRBQmh4a1ZWSHFqalJKZz09" target="_blank" rel="noopener">서울아산병원</a></span>
+            <span class="site-who">소아정신건강의학과 · 이태엽 교수</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name"><a href="https://dongsan.dsmc.or.kr:49870/content/02depart/doctor_view.php?md_idx=446" target="_blank" rel="noopener">계명대 동산병원</a></span>
+            <span class="site-who">정신건강의학과 · 이호준 교수</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">미정 (3번째)</span>
+            <span class="site-who">후보 미착수</span>
           </div>
         </div>
-        <div class="site primary">
-          <span class="flag">🇺🇸</span><span class="role pri">US 100</span>
-          <div class="stitle">US cohort (3 sites)</div>
-          <div class="stotal">Utah · Delaware · TBD · $2,000/child</div>
-          <div class="arm2">
-            <div class="a int"><div class="n">50</div><div class="l">GemGem400 + usual care</div></div>
-            <div class="a ctrl"><div class="n">50</div><div class="l">Education app + usual care</div></div>
+      </div>
+      <div class="card us">
+        <h2>사이트 구성</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://www.udel.edu/academics/colleges/chs/departments/hbns/faculty/daehyoung-lee/" target="_blank" rel="noopener">델라웨어대</a></span>
+            <span class="site-who">Health Behavior &amp; Nutrition Sciences · Daehyoung Lee 교수</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://profiles.faculty.utah.edu/u6061271" target="_blank" rel="noopener">유타대</a></span>
+            <span class="site-who">Occupational &amp; Recreational Therapies · Yongseop Kim 교수</span>
           </div>
         </div>
       </div>
 
-      <div class="pooled">
-        <span class="lab">Korea + US Pooled →</span>
-        <span class="big">100 intervention + 100 control = 200</span>
-        <span class="lab">(site-adjusted)</span>
+      <div class="card kr">
+        <h2>운영 방식</h2>
+        <div class="big">온사이트 (대면)</div>
+        <p>한국은 밀집도가 높아 현장 방식이 더 합리적이라는 판단으로 확정</p>
+        <span class="tag done">확정</span>
+      </div>
+      <div class="card us">
+        <h2>운영 방식</h2>
+        <div class="big">완전 리모트</div>
+        <p>부모 주도 홈 사용, 스케일러빌리티 강조</p>
+        <span class="tag done">확정</span>
       </div>
 
-      <div class="subh">Power</div>
-      <table class="pwr">
-        <thead><tr><th>Analysis</th><th>N (per arm)</th><th>Power (d=0.5)</th><th>Role</th></tr></thead>
-        <tbody>
-          <tr><td>Korea + US pooled (primary)</td><td>200 (100/100)</td><td class="hi">&gt; 90%</td><td>Primary conclusion</td></tr>
-          <tr><td>Korea contribution</td><td>100 (50/50)</td><td>—</td><td>Domestic evidence · strata</td></tr>
-          <tr><td>US contribution</td><td>100 (50/50)</td><td>—</td><td>Racial diversity · generalizability</td></tr>
-        </tbody>
-      </table>
-      <p class="sec-desc" style="margin-left:0;margin-top:12px;">Assumptions: two-sided α=0.05 · ANCOVA (baseline-adjusted, r≈0.5) · 1:1. Diagnosis handled as covariate.</p>
-
-      <div class="subh">Indication — ASD only</div>
-      <div class="note">Eligibility gate = <b>confirmed ASD diagnosis + low fine motor</b>. Per the 2026-07 decision, CP·DCD·Down syndrome etc. are excluded from the main study (pilot EEG/mechanistic data can still be repurposed as CP evidence separately). Power is on completers → keep a <b>~15–20% enrollment buffer</b>; re-estimate effect size primarily from the ASD subgroup of the pilot (Severance N=27, CP 70% / ASD 30%).</div>
-
-      <div class="subh">Multi-site structure — 5 sites (Korea 2 + US 3)</div>
-      <div class="grid g2">
-        <div class="card"><h3>🇰🇷 Korea ×2 · 100</h3>
-          <ul class="clean"><li>Sinchon Severance (capital) — 60 (30/30)</li><li>Wonju Severance (Gangwon · provincial) — 40 (20/20)</li></ul></div>
-        <div class="card"><h3>🇺🇸 US ×3 · 100</h3>
-          <ul class="clean"><li>Utah 34(17/17) · Delaware 34(17/17) · TBD 32(16/16)</li><li><i>3rd site TBD</i></li></ul></div>
+      <div class="card kr">
+        <h2>1차 결과지표</h2>
+        <div class="big">대근육 — 지표 논의 필요</div>
+        <p>가속도계 사용 여부 미정 — 온사이트 특성을 살린 대근육 측정 지표 논의 필요</p>
+        <span class="tag warn">논의 필요</span>
       </div>
-      <div class="note">💰 Budget: Korea 100×<b>₩2M/child</b> + US 100×<b>$2,000/child</b> = <b>₩500M</b> (≈ $333K). · 📍 Diversity: Korea capital+provincial; US multi-site (≥3) + racial diversity.</div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">6</div><h2>Analysis Strategy</h2></div>
-      <div class="steps">
-        <div class="step"><span class="badge">Primary</span><h4>Primary Analysis</h4><p>Compare change in hand function / ADL between arms across the full Korean sample.</p></div>
-        <div class="step"><span class="badge">Adjustment</span><h4>Covariate Adjustment</h4><p>Adjust for diagnosis · age · baseline hand function · cognitive level · behavior/attention.</p></div>
-        <div class="step"><span class="badge">Subgroup</span><h4>Subgroup (Exploratory)</h4><p>Report by sex / baseline hand-function severity — kept exploratory, not over-claimed.</p></div>
+      <div class="card us">
+        <h2>1차 결과지표</h2>
+        <div class="big">대근육 (자발적 움직임 총량)</div>
+        <p>가속도계 스텝카운트/중강도 신체활동량 — 세션 있는 날 vs 없는 날 비교</p>
+        <p style="color:var(--red)">Box &amp; Blocks Test 등 객관적 소근육 검사는 원격 평가 불가로
+        1차·2차 모두 배제 — 부모 설문(PEDI-CAT)만 사용</p>
+        <span class="tag done">확정</span>
       </div>
-    </section>
 
-    <section>
-      <div class="sec-head"><div class="sec-num">7</div><h2>Outcomes</h2></div>
-      <div class="tier">
-        <div class="tier-label t-pri">Primary<small>main endpoint</small></div>
-        <div class="tier-body"><b>Box & Blocks Test (performance-based manual dexterity)</b> — most <b>responsive</b> to the 400-rep intervention · objective · blinded assessor · pilot-validated. Single primary + pre-defined MCID.
-          <div class="pills"><span class="pill acc">Box & Blocks (BBT)</span><span class="pill acc">single primary · objective</span><span class="pill acc">blinded assessor</span></div>
-        </div>
+      <div class="card kr">
+        <h2>2차 결과지표</h2>
+        <ul>
+          <li>보호자 설문(PEDI-CAT, 소근육/일상 프록시)</li>
+          <li><b>Box &amp; Blocks Test</b> — 손 기민성 객관적 수행검사, 기존 임상시험(아산병원)에서
+          이미 사용한 도구, 온사이트라 대면 시행 가능</li>
+          <li><b>EEG</b> — 장비 비용 이슈로 유지 여부 논의 필요</li>
+          <li>종료 시 부모 만족도 인터뷰</li>
+        </ul>
       </div>
-      <div class="tier">
-        <div class="tier-label t-sec">Secondary<small>hand function</small></div>
-        <div class="tier-body">Functional hand use + performance
-          <div class="pills"><span class="pill">ABILHAND-Kids (functional)</span><span class="pill">AROM</span><span class="pill">grip / pinch</span><span class="pill">VABS-II (long-term ADL)</span></div>
-        </div>
+      <div class="card us">
+        <h2>2차 결과지표</h2>
+        <ul>
+          <li>보호자 설문(PEDI-CAT, 소근육/일상 프록시)</li>
+          <li>기타 가속도계 지표</li>
+          <li>종료 시 부모 만족도 인터뷰</li>
+        </ul>
       </div>
-      <div class="tier">
-        <div class="tier-label t-exp">Exploratory<small>mechanistic</small></div>
-        <div class="tier-body">Mechanism &amp; usage data
-          <div class="pills"><span class="pill">EEG</span><span class="pill">neural connectivity</span><span class="pill">app logs</span><span class="pill">sessions</span><span class="pill">adherence</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="invite" style="border-left-color:var(--accent-2);background:linear-gradient(90deg,rgba(51,214,166,.12),rgba(51,214,166,0));">🧪 <b style="color:#5be3c0;">Pilot underway</b> (Severance) — N=27 · CP 70% / ASD 30% · Primary: AROM, Box &amp; Blocks · Secondary: EEG. The strengthening & decisions below are for the <b style="color:#5be3c0;">main study (N=200)</b>.</div>
-      <div class="sec-head"><div class="sec-num">8</div><h2>Methodological Strengthening (confirmatory-grade)</h2></div>
-      <p class="sec-desc">Per expert review — 6 locked decisions that move it from "exploratory" to "confirmatory-ready"</p>
-      <div class="upg">
-        <div class="upgi"><div class="t">① Control · Blinding</div>
-          <div class="ba"><span class="tag no">Now</span><span>TAU/Waitlist · unblinded → expectancy bias</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Active/Sham app comparator + blinded assessor</span></div></div>
-        <div class="upgi"><div class="t">② Primary outcome</div>
-          <div class="ba"><span class="tag no">Now</span><span>AROM·Box&amp;Blocks (impairment/performance)</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Primary = <b>responsive hand function (Box & Blocks)</b>; functional (ABILHAND) & ADL (VABS, long-term) as secondary + MCID</span></div></div>
-        <div class="upgi"><div class="t">③ Power assumptions</div>
-          <div class="ba"><span class="tag no">Now</span><span>Assumed d & dropout</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Recompute from pilot (N=27) effect size + cluster (ICC)/dropout realism</span></div></div>
-        <div class="upgi"><div class="t">④ Entry criterion</div>
-          <div class="ba"><span class="tag no">Now</span><span>"manual dexterity impairment" vague</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Objective tool + cutoff (e.g., ≤5th %ile)</span></div></div>
-        <div class="upgi"><div class="t">⑤ Diagnostic heterogeneity</div>
-          <div class="ba"><span class="tag no">Now</span><span>CP 70% + ASD 30% mix (pilot)</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Main study (N=200) is ASD-only, so the heterogeneity is resolved (2026-07 decision) — pilot CP data repurposed as mechanistic (EEG) evidence only</span></div></div>
-        <div class="upgi"><div class="t">⑥ EEG biomarker</div>
-          <div class="ba"><span class="tag no">Now</span><span>collected as secondary only</span></div>
-          <div class="ba" style="margin-top:8px;"><span class="tag yes">Fix</span><span>Pre-define key EEG endpoint/biomarker + pilot feasibility</span></div></div>
-      </div>
-      <div class="note">📋 Also lock: pre-registration (ClinicalTrials.gov+CRIS) · SAP · estimand (ICH E9-R1) · central allocation/concealment · ITT&amp;PP · adherence definition · safety monitoring · (if two-country) TAU harmonization & measurement invariance · health-economic outcomes.</div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">9</div><h2>Open Decisions — for Partner-Professor Discussion</h2></div>
-      <p class="sec-desc">To resolve before locking the N=200 protocol · chip = 🟣 needs consensus / 🟠 needs pilot data</p>
-      <div class="dec">
-        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">1</span><h4>Indication scope</h4></div>
-          <div class="opts"><span class="o">ASD only (locked)</span><span class="o">Broaden to IDD</span><span class="o">CP-led</span></div>
-          <div class="rec"><b>Tension (pre-decision)</b>: product mechanism (CP) & rigor ↔ funder (Hyundai Insurance = ASD). Broaden to IDD, or narrow to ASD?</div>
-          <div class="pick"><b>✅ Locked (2026-07-22)</b>: narrow the indication to <b>ASD only</b>. CP/DCD/Down syndrome etc. are excluded from the main study (pilot EEG/mechanistic data can still be repurposed as CP evidence separately). A <b>gross-motor game is added</b> alongside to address ASD children's disengagement from fine-motor-only tasks.</div></div>
-        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">2</span><h4>Primary outcome</h4></div>
-          <div class="opts"><span class="o">Keep AROM·BBT</span><span class="o">VABS-II Daily Living</span><span class="o">ABILHAND-Kids</span></div>
-          <div class="rec"><b>Tension</b>: AROM·BBT are impairment-level → policy/reimbursement needs <b>function/ADL</b>. Guideline's digital primary = VABS-II.</div>
-          <div class="pick"><b>✅ Locked</b>: primary = <b>Box & Blocks</b> (responsive·objective·pilot); secondary = <b>ABILHAND-Kids (functional)·AROM</b>; VABS as long-term ADL secondary; exploratory = EEG.</div></div>
-        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">3</span><h4>Control arm</h4></div>
-          <div class="opts"><span class="o">Active/Sham app</span><span class="o">Waitlist</span><span class="o">TAU only</span></div>
-          <div class="rec"><b>Tension</b>: sham = best rigor but dev cost/ethics. Waitlist = biased.</div>
-          <div class="pick"><b>✅ Rec</b>: <b>Active/Sham app + blinded assessor</b>. If dev cost is prohibitive, use an attention-matched active control.</div></div>
-        <div class="dcard"><span class="chip data">data</span><div class="qn"><span class="qnum">4</span><h4>Entry cutoff</h4></div>
-          <div class="opts"><span class="o">≤5th %ile</span><span class="o">≤16th %ile</span><span class="o">clinical judgment</span></div>
-          <div class="rec"><b>Tension</b>: stricter = more homogeneous/reproducible, slower recruitment. On which tool?</div>
-          <div class="pick"><b>✅ Rec</b>: <b>≤16th %ile (−1SD)</b> — balances homogeneity & recruitment.</div></div>
-        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">5</span><h4>Two-country vs Korea-only</h4></div>
-          <div class="opts"><span class="o">Korea+US 200 (keep)</span><span class="o">Korea only</span></div>
-          <div class="rec"><b>Tension</b>: generalizability ↔ non-equivalent TAU, FDA/IRB, cost.</div>
-          <div class="pick"><b>✅ Locked</b>: <b>keep Korea+US</b> — US ≥3 sites satisfies multi-site (guideline ≥3) & generalizability. ⚠️ Korea is single-site (Severance, capital region) → Korean regional diversity unmet; consider adding a non-capital site.</div></div>
-        <div class="dcard"><span class="chip data">data</span><div class="qn"><span class="qnum">6</span><h4>Key EEG biomarker</h4></div>
-          <div class="opts"><span class="o">Mu suppression</span><span class="o">Connectivity</span><span class="o">ERP</span></div>
-          <div class="rec"><b>Tension</b>: feasibility in 3–7yo ASD (artifact/cooperation). See which the pilot captures.</div>
-          <div class="pick"><b>✅ Rec</b>: <b>sensorimotor Mu-rhythm suppression</b> as the key EEG (tied to motor mechanism); connectivity secondary. Confirm feasibility in pilot.</div></div>
-        <div class="dcard"><span class="chip data">data</span><div class="qn"><span class="qnum">7</span><h4>Dose · duration</h4></div>
-          <div class="opts"><span class="o">12 wks</span><span class="o">8 wks</span><span class="o">16 wks</span></div>
-          <div class="rec"><b>Tension</b>: clinical basis for the "400 reps" dose vs home-adherence limits.</div>
-          <div class="pick"><b>✅ Rec</b>: <b>12 weeks</b> (motor-learning standard) + adherence monitoring & minimum-dose sensitivity analysis.</div></div>
-        <div class="dcard"><span class="chip disc">discuss</span><div class="qn"><span class="qnum">8</span><h4>Follow-up (durability)</h4></div>
-          <div class="opts"><span class="o">12 wks</span><span class="o">24 wks</span><span class="o">52 wks</span></div>
-          <div class="rec"><b>Tension</b>: claiming lasting plasticity needs long follow-up ↔ dropout/cost.</div>
-          <div class="pick"><b>✅ Rec</b>: <b>24-week follow-up</b> (durability vs dropout balance); optional 52-week if feasible.</div></div>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head"><div class="sec-num">10</div><h2>Guideline Compliance Check (SPACE 2 · 12 Domains)</h2></div>
-      <p class="sec-desc">Against the Little Hearts Explorer [Annex 2] research-design guideline · ✅ meets / ⚠️ below recommended / ❗ now incorporated (★ = mandatory)</p>
-      <table>
-        <thead><tr><th>Domain</th><th>Guideline (★ mandatory)</th><th>Our plan</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>1 Design</td><td>RCT + site count + duration ★</td><td>Multi-site RCT · 12 wks + 24-wk follow-up</td><td class="hi">✅</td></tr>
-          <tr><td>2 Selection·Random.</td><td>DSM-5/ICD-11 in/exclusion + allocation concealment ★</td><td>DSM-5/ICD-11 · central allocation · country×dx strata</td><td class="hi">✅</td></tr>
-          <tr><td>3 Sample size</td><td>≥160 total · ≥80/arm + power≥80% ★</td><td>200 (100/arm)</td><td class="hi">✅ exceeds</td></tr>
-          <tr><td>4 Intervention</td><td>Manual + provider criteria + control spec ★</td><td>Manualized · active control (edu app) · version-locked</td><td class="hi">✅</td></tr>
-          <tr><td>5 Outcomes</td><td>Single primary + pre-reg + validated tool (α≥0.80) ★</td><td>Box & Blocks single primary (responsive·objective) · ABILHAND/VABS secondary</td><td class="hi">✅</td></tr>
-          <tr><td>6 Timing</td><td>Baseline + follow-up, timepoints pre-defined ★</td><td>T0 · 12 wk · 3-mo post (24 wk) ±1 wk</td><td class="hi">✅</td></tr>
-          <tr><td>7 Blinding</td><td>Assessor–therapist separation + blinded assessor ★</td><td>Blinded assessor · digital blinding reinforced</td><td class="hi">✅</td></tr>
-          <tr><td>8 Data</td><td>Standardized CRF ★</td><td>Unified CRF · missing-data rules</td><td class="hi">✅</td></tr>
-          <tr><td>9 Statistics</td><td>Pre-registered SAP + ITT + primary analysis ★</td><td>SAP · ITT&amp;PP · ANCOVA · multiplicity control</td><td class="hi">✅</td></tr>
-          <tr><td>10 Health econ.</td><td>Payer-perspective costs + QALY (EQ-5D-Y/HUI3) ★</td><td>EQ-5D-Y QALY + direct/indirect costs</td><td style="color:var(--warn)">❗→added</td></tr>
-          <tr><td>11 Ethics</td><td>IRB + CRIS/ClinicalTrials reg. + consent·assent ★</td><td>IRB · CRIS reg. · age 5–6 picture-card assent · COI</td><td class="hi">✅</td></tr>
-          <tr><td>12 Generaliz.·policy</td><td>Regional·SES diversity + SCI/SCIE publication plan ★</td><td>Korea 2 sites (Sinchon·Wonju) + US 3 · SCI/SCIE plan</td><td style="color:var(--warn)">⚠️ KR 2 regions</td></tr>
-        </tbody>
-      </table>
-
-      <div class="subh">Digital-intervention requirements (Guideline Appendix B.2)</div>
-      <div class="upg">
-        <div class="upgi"><div class="t">Active control</div><div class="ba"><span class="tag yes">done</span><span>Age-appropriate general education app → controls placebo effect</span></div></div>
-        <div class="upgi"><div class="t">App/AI version frozen</div><div class="ba"><span class="tag yes">done</span><span>Version & algorithm locked for the study (security patches only)</span></div></div>
-        <div class="upgi"><div class="t">3-tier adherence</div><div class="ba"><span class="tag yes">done</span><span>Auto-log (400-reps/day attainment) + weekly parent diary + 20% video review</span></div></div>
-        <div class="upgi"><div class="t">No in-app scores</div><div class="ba"><span class="tag yes">done</span><span>In-app task scores cannot be outcomes → external measures only (VABS·BBT)</span></div></div>
-        <div class="upgi"><div class="t">Dose standard</div><div class="ba"><span class="tag yes">done</span><span>400 active reps/day (time varies per child) · parent-assisted</span></div></div>
-        <div class="upgi"><div class="t">Screen-time monitoring</div><div class="ba"><span class="tag yes">done</span><span>Monthly survey · alert & counseling if total &gt;90 min/day</span></div></div>
-      </div>
-      <div class="note">📋 Also locked: minimum ≥80/arm (160 total) — our 200 (100/arm) meets it / <b>SCI·SCIE publication plan</b> (Domain 12 mandatory) / CONSORT 2025·SPIRIT 2013-based protocol (recommended).<br>⚠️ Korea covers only 2 regions (capital Sinchon + provincial Wonju) → below the recommended <b>≥3 regions</b> → state as a limitation or add a non-capital site. US 3 sites satisfy overall multi-site (≥3) + racial diversity.</div>
-    </section>
-
-    <div class="conclusion">
-      <h2>📌 Conclusion</h2>
-      <p style="margin:0;color:#dde2ec;">Rather than keeping a broad IDD umbrella, <b>narrow strongly to a single ASD indication combined with the functional gate of manual dexterity impairment.</b><br>The following <b>must be in the protocol from the start</b>:</p>
-      <div class="stamp">Stratified Randomization &nbsp;+&nbsp; Covariate Adjustment &nbsp;+&nbsp; Subgroup Analysis</div>
     </div>
+
+    <div class="ticket-row">
+      <div class="card full">
+        <h2>일정</h2>
+        <ul>
+          <li>8월 30일 — 수행계획서 제출(한/미 트랙 별도 PDF)</li>
+          <li>9월 18일 — 12개팀 대면 최종 발표(날짜 확정)</li>
+          <li>9월 중순~10월 — 6개팀 최종 선정</li>
+          <li>11월(공식) / 12월~1월(현실적 예상) — 승인·모집 시작</li>
+        </ul>
+      </div>
+
+      <div class="card full">
+        <h2>최우선 미해결 이슈 (양 트랙 공통)</h2>
+        <ul>
+          <li>3번째 한국 사이트 후보 발굴</li>
+          <li>대근육 세션 길이 아직 미정</li>
+          <li>한국 온사이트 대근육 1차 지표·가속도계 사용 여부 논의 필요</li>
+          <li>EEG 유지 여부 — 장비 비용 이슈로 재논의 필요</li>
+          <li>아동용 가속도계 워치 기종 선정(화웨이 배제, Actigraph 등 검증 브랜드 우선) — 미국 트랙용</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      작성: 클로드 · 최종 갱신 2026-08-05
+    </footer>
   </div>
 
-  <footer>GemGem400 · Research Design Summary · 2026</footer>
+  <!-- ================= English ================= -->
+  <div class="tab-panel" id="tab-en">
+
+    <div class="grid">
+      <div class="card">
+        <h2>Target Population</h2>
+        <div class="big">ASD only (with dyspraxia), ages 4–7</div>
+        <p>CP fully excluded from this study</p>
+        <span class="tag done">Confirmed</span>
+      </div>
+
+      <div class="card">
+        <h2>Intervention Design</h2>
+        <div class="big">5x/week, 400 fine-motor reps + gross-motor session</div>
+        <p>Utah's own pilot runs 5x/week with good adherence so far — frequency confirmed at 5x;
+        gross-motor session length still needs to be set</p>
+        <span class="tag done">Frequency confirmed</span>
+        <span class="tag warn">Session length TBD</span>
+      </div>
+
+      <div class="card full">
+        <h2>Why two tracks</h2>
+        <p>Korea and the US run as <b>two independent tracks</b> rather than one merged design —
+        judged better for credibility and publication flexibility</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="split-head kr">🇰🇷 Korea Track (on-site)</div>
+      <div class="split-head us">🇺🇸 US Track (remote)</div>
+
+      <div class="card kr">
+        <h2>Sample &amp; Design</h2>
+        <div class="big">On-site, 3 sites · 50 each</div>
+        <p>Keimyung, Asan Medical Center, and the 3rd site each target 50, +10 more per site as
+        an incentive tier (25% bonus)</p>
+        <span class="tag done">Confirmed</span>
+      </div>
+      <div class="card us">
+        <h2>Sample &amp; Design</h2>
+        <div class="big">Remote, 200 (100/100)</div>
+        <p>Delaware+Utah combined, RCT</p>
+        <span class="tag done">Confirmed</span>
+      </div>
+
+      <div class="card kr">
+        <h2>Sites</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name"><a href="https://www.amc.seoul.kr/asan/staff/base/staffBaseInfoDetail.do?drEmpId=QXcvMFhUaXRBQmh4a1ZWSHFqalJKZz09" target="_blank" rel="noopener">Asan Medical Center</a></span>
+            <span class="site-who">Dept. of Child &amp; Adolescent Psychiatry · Prof. Lee Tae-yeop</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name"><a href="https://dongsan.dsmc.or.kr:49870/content/02depart/doctor_view.php?md_idx=446" target="_blank" rel="noopener">Keimyung Univ. Dongsan Hospital</a></span>
+            <span class="site-who">Dept. of Psychiatry · Prof. Lee Ho-jun</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">TBD (3rd site)</span>
+            <span class="site-who">candidate not yet sourced</span>
+          </div>
+        </div>
+      </div>
+      <div class="card us">
+        <h2>Sites</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://www.udel.edu/academics/colleges/chs/departments/hbns/faculty/daehyoung-lee/" target="_blank" rel="noopener">Univ. of Delaware</a></span>
+            <span class="site-who">Health Behavior &amp; Nutrition Sciences · Prof. Daehyoung Lee</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://profiles.faculty.utah.edu/u6061271" target="_blank" rel="noopener">Univ. of Utah</a></span>
+            <span class="site-who">Occupational &amp; Recreational Therapies · Prof. Yongseop Kim</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card kr">
+        <h2>Delivery Mode</h2>
+        <div class="big">On-site (in-person)</div>
+        <p>Finalized on the reasoning that Korea's population density favors in-person delivery</p>
+        <span class="tag done">Confirmed</span>
+      </div>
+      <div class="card us">
+        <h2>Delivery Mode</h2>
+        <div class="big">Fully remote</div>
+        <p>Parent-led home use, emphasizing scalability</p>
+        <span class="tag done">Confirmed</span>
+      </div>
+
+      <div class="card kr">
+        <h2>Primary Outcome</h2>
+        <div class="big">Gross motor — metric under discussion</div>
+        <p>Whether to use an accelerometer is undecided — needs discussion to define a gross-motor
+        primary outcome suited to on-site delivery</p>
+        <span class="tag warn">Under discussion</span>
+      </div>
+      <div class="card us">
+        <h2>Primary Outcome</h2>
+        <div class="big">Gross motor (spontaneous movement volume)</div>
+        <p>Accelerometer step count / moderate-to-vigorous physical activity —
+        intervention days vs. non-intervention days</p>
+        <p style="color:var(--red)">Objective fine-motor tests (e.g. Box &amp; Blocks Test) are
+        excluded from both primary and secondary — no validated remote-administration method;
+        PEDI-CAT (parent-report) only</p>
+        <span class="tag done">Confirmed</span>
+      </div>
+
+      <div class="card kr">
+        <h2>Secondary Outcome</h2>
+        <ul>
+          <li>PEDI-CAT (parent-report, fine motor/ADL proxy)</li>
+          <li><b>Box &amp; Blocks Test</b> — objective hand-dexterity performance test, already used in
+          an earlier clinical trial (Asan Medical Center), feasible in person on-site</li>
+          <li><b>EEG</b> — whether to keep it is under discussion, due to equipment cost</li>
+          <li>End-of-study parent satisfaction interview</li>
+        </ul>
+      </div>
+      <div class="card us">
+        <h2>Secondary Outcome</h2>
+        <ul>
+          <li>PEDI-CAT (parent-report, fine motor/ADL proxy)</li>
+          <li>Other accelerometer metrics</li>
+          <li>End-of-study parent satisfaction interview</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ticket-row">
+      <div class="card full">
+        <h2>Timeline</h2>
+        <ul>
+          <li>Aug 30 — Submit execution plan (separate PDFs for KR/US tracks)</li>
+          <li>Sept 18 — In-person final pitch to 12 teams (date confirmed)</li>
+          <li>Mid-Sept–Oct — Final selection (6 teams)</li>
+          <li>Nov (official) / Dec–Jan (realistic estimate) — IRB approval &amp; enrollment start</li>
+        </ul>
+      </div>
+
+      <div class="card full">
+        <h2>Top Open Issues (common to both tracks)</h2>
+        <ul>
+          <li>Find a candidate for the 3rd Korea site</li>
+          <li>Gross-motor session length still undecided</li>
+          <li>Korea on-site track: gross-motor primary outcome and accelerometer use still under discussion</li>
+          <li>Whether to keep EEG — under discussion due to equipment cost</li>
+          <li>Select a child-validated accelerometer watch (exclude Huawei; prioritize Actigraph-class
+          devices) — for the US track</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      Prepared by Claude · Last updated 2026-08-05
+    </footer>
+  </div>
+
 </div>
 
 <script>
-  function setLang(l){
-    document.querySelectorAll('.lang').forEach(x=>x.classList.remove('active'));
-    document.getElementById(l).classList.add('active');
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    event.target.classList.add('active');
-    document.querySelectorAll('[data-ko]').forEach(el=>{
-      el.innerHTML = el.getAttribute(l==='ko'?'data-ko':'data-en');
+  const titles = {
+    ko: "현재까지 논의된 내용 정리 (2026-08-05 기준)",
+    en: "Summary of Discussions to Date (as of 2026-08-05)",
+  };
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      document.getElementById('title-h1').textContent = titles[btn.dataset.tab];
     });
-    document.documentElement.lang = l;
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
+  });
 </script>
+
 </body>
 </html>
