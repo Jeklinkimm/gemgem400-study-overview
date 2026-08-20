@@ -76,6 +76,17 @@
   ul{margin:6px 0; padding-left:18px}
   li{margin-bottom:5px; font-size:14.5px; color:var(--ink-soft)}
   .split li{font-size:13.5px}
+  .site-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+  .site{
+    background:var(--paper); border:1px solid var(--line); border-radius:8px;
+    padding:8px 12px; font-size:13px; flex:1; min-width:150px; text-align:center;
+    line-height:1.45;
+  }
+  .site .flag{font-size:18px}
+  .site .site-name{display:block; font-size:13.5px; font-weight:600; margin-top:2px}
+  .site .site-who{display:block; color:var(--ink-faint); font-size:12px}
+  .site a{color:inherit; text-decoration:none; border-bottom:1px dotted var(--ink-faint)}
+  .site a:hover{border-bottom-style:solid}
   footer{
     margin-top:24px; font-size:12px; color:var(--ink-faint);
     border-top:1px solid var(--line); padding-top:14px;
@@ -192,7 +203,7 @@
       <div class="card kr">
         <h2>표본 · 설계</h2>
         <div class="big">온사이트, 3사이트 · 각 50명</div>
-        <p>계명대·아산병원·3번째 사이트 각 50명 목표</p>
+        <p>세브란스·국제성모병원(인천)·건양대학교병원(대전) 각 50명 목표</p>
         <span class="tag done">확정</span>
       </div>
       <div class="card us">
@@ -200,6 +211,44 @@
         <div class="big">리모트, 200명 (100/100)</div>
         <p>델라웨어+유타 합산, RCT</p>
         <span class="tag done">확정</span>
+      </div>
+
+      <div class="card kr">
+        <h2>사이트 구성</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">세브란스병원</span>
+            <span class="site-who">소아재활의학과 · 홍준택 교수 (재활·평가)</span>
+            <span class="site-who">소아정신과 · 협력 교수 조율 중</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">가톨릭관동대 국제성모병원 (인천)</span>
+            <span class="site-who">소아정신과 · 정경운 교수 (협력 논의)</span>
+            <span class="site-who">소아재활의학과 · 김두영 교수 (참여 논의)</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">건양대학교병원 (대전)</span>
+            <span class="site-who">자폐 코호트 · 담당 교수 연결·참여 논의 중</span>
+          </div>
+        </div>
+      </div>
+      <div class="card us">
+        <h2>사이트 구성</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://www.udel.edu/academics/colleges/chs/departments/hbns/faculty/daehyoung-lee/" target="_blank" rel="noopener">델라웨어대</a></span>
+            <span class="site-who">Health Behavior &amp; Nutrition Sciences · Daehyoung Lee 교수</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://profiles.faculty.utah.edu/u6061271" target="_blank" rel="noopener">유타대</a></span>
+            <span class="site-who">Occupational &amp; Recreational Therapies · Yongseop Kim 교수</span>
+          </div>
+        </div>
       </div>
 
       <div class="card kr">
@@ -234,7 +283,7 @@
         <h2>2차 결과지표</h2>
         <ul>
           <li>보호자 설문(PEDI-CAT, 소근육/일상 프록시)</li>
-          <li><b>Box &amp; Blocks Test</b> — 손 기민성 객관적 수행검사, 기존 임상시험(아산병원)에서
+          <li><b>Box &amp; Blocks Test</b> — 손 기민성 객관적 수행검사, 기존 임상시험에서
           이미 사용한 도구, 온사이트라 대면 시행 가능</li>
           <li><b>EEG</b> — 유지 여부 논의 필요</li>
           <li>종료 시 부모 만족도 인터뷰</li>
@@ -264,7 +313,7 @@
       <div class="card full">
         <h2>최우선 미해결 이슈 (양 트랙 공통)</h2>
         <ul>
-          <li>3번째 한국 사이트 후보 발굴</li>
+          <li>건양대학교병원 담당 연락·연구진 확정</li>
           <li>대근육 세션 길이 아직 미정</li>
           <li>한국 온사이트 대근육 1차 지표·가속도계 사용 여부 논의 필요</li>
           <li>EEG 유지 여부 — 재논의 필요</li>
@@ -274,7 +323,7 @@
     </div>
 
     <footer>
-      작성: 클로드 · 최종 갱신 2026-08-05
+      최종 갱신 2026-08-20
     </footer>
   </div>
 
@@ -312,7 +361,7 @@
       <div class="card kr">
         <h2>Sample &amp; Design</h2>
         <div class="big">On-site, 3 sites · 50 each</div>
-        <p>Keimyung, Asan Medical Center, and the 3rd site each target 50</p>
+        <p>Severance, International St. Mary's (Incheon), and Konyang University Hospital (Daejeon), 50 each</p>
         <span class="tag done">Confirmed</span>
       </div>
       <div class="card us">
@@ -320,6 +369,44 @@
         <div class="big">Remote, 200 (100/100)</div>
         <p>Delaware+Utah combined, RCT</p>
         <span class="tag done">Confirmed</span>
+      </div>
+
+      <div class="card kr">
+        <h2>Sites</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">Severance Hospital</span>
+            <span class="site-who">Pediatric Rehabilitation Medicine · Prof. Joon-Taek Hong (rehabilitation &amp; assessment)</span>
+            <span class="site-who">Child Psychiatry · collaborating faculty being coordinated</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">International St. Mary's Hospital (Incheon)</span>
+            <span class="site-who">Child Psychiatry · Prof. Kyung-Woon Jung (collaboration under discussion)</span>
+            <span class="site-who">Pediatric Rehabilitation Medicine · Prof. Doo-Young Kim (participation under discussion)</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇰🇷</span>
+            <span class="site-name">Konyang University Hospital (Daejeon)</span>
+            <span class="site-who">ASD cohort · faculty contact and participation under discussion</span>
+          </div>
+        </div>
+      </div>
+      <div class="card us">
+        <h2>Sites</h2>
+        <div class="site-list">
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://www.udel.edu/academics/colleges/chs/departments/hbns/faculty/daehyoung-lee/" target="_blank" rel="noopener">Univ. of Delaware</a></span>
+            <span class="site-who">Health Behavior &amp; Nutrition Sciences · Prof. Daehyoung Lee</span>
+          </div>
+          <div class="site">
+            <span class="flag">🇺🇸</span>
+            <span class="site-name"><a href="https://profiles.faculty.utah.edu/u6061271" target="_blank" rel="noopener">Univ. of Utah</a></span>
+            <span class="site-who">Occupational &amp; Recreational Therapies · Prof. Yongseop Kim</span>
+          </div>
+        </div>
       </div>
 
       <div class="card kr">
@@ -358,7 +445,7 @@
         <ul>
           <li>PEDI-CAT (parent-report, fine motor/ADL proxy)</li>
           <li><b>Box &amp; Blocks Test</b> — objective hand-dexterity performance test, already used in
-          an earlier clinical trial (Asan Medical Center), feasible in person on-site</li>
+          an earlier clinical trial, feasible in person on-site</li>
           <li><b>EEG</b> — whether to keep it is under discussion</li>
           <li>End-of-study parent satisfaction interview</li>
         </ul>
@@ -398,7 +485,7 @@
     </div>
 
     <footer>
-      Prepared by Claude · Last updated 2026-08-05
+      Last updated 2026-08-20
     </footer>
   </div>
 
